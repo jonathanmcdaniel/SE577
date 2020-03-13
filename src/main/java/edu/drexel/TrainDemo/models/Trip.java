@@ -1,49 +1,50 @@
 package edu.drexel.TrainDemo.models;
 
-import javax.swing.plaf.basic.BasicTreeUI;
-import java.sql.Time;
-import java.util.ArrayList;
-import java.util.Date;
+import javax.persistence.*;
 
-public class Route {
-    private TrainStation departureStation;
-    private TrainStation arrivalStation;
-    private Time departureTime;
-    private Time arrivalTime;
-    private Train train;
-    private double price;
-    private ArrayList<Passenger> passengers;
+@Entity
+public class Trip {
 
-    public TrainStation getDepartureStation(){
-        return departureStation;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    private Long routeId;
+    private Long calendarId;
+    private String headsign;
+    private Boolean direction;
+
+    protected Trip(){
     }
 
-    public TrainStation getArrivalStation(){
-        return arrivalStation;
+    public Long getId(){
+        return id;
     }
 
-    public Date getDepartureTime(){
-        return departureTime;
+    public Long getRouteId(){
+        return routeId;
     }
 
-    public Date getArrivalTime(){
-        return arrivalTime;
+    public Long getCalendarId(){
+        return calendarId;
     }
 
-    public Train getTrain(){
-        return train;
+    public String getHeadsign(){
+        return headsign;
     }
 
-    public double getPrice(){
-        return price;
+    public Boolean getDirection(){
+        return direction;
     }
 
-    public Passenger getPassenger(int index){
-        passengers.get(index);
-    }
-
-    public ArrayList<Passenger> getPassengers(){
-        return passengers;
+    @Override
+    public String toString() {
+        return "Trip{" +
+                "id=" + id +
+                ", routeId=" + routeId +
+                ", calendarId=" + calendarId
+                ", headsign='" + headsign + '\'' +
+                ", direction=" + direction +
+                '}';
     }
 
 }
