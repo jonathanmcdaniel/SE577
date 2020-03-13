@@ -41,7 +41,7 @@ public class Trip {
         return "Trip{" +
                 "id=" + id +
                 ", routeId=" + routeId +
-                ", calendarId=" + calendarId
+                ", calendarId=" + calendarId +
                 ", headsign='" + headsign + '\'' +
                 ", direction=" + direction +
                 '}';

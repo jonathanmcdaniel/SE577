@@ -1,5 +1,7 @@
 package edu.drexel.TrainDemo.models;
 
+import java.sql.Date;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,7 +18,7 @@ public class Calendar {
     private Boolean saturday;
     private Boolean sunday;
     private Date startDate;
-    private Date endDate;
+	private Date endDate;
 
     protected Calendar(){
     }
@@ -78,4 +80,6 @@ public class Calendar {
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 '}';
-    }
+	}
+
+}

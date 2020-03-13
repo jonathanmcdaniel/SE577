@@ -11,7 +11,7 @@ public class Stop {
     private String name;
     private Double lat;
     private Double lon;
-    private String external_url;
+    private String externalUrl;
 
     protected Stop(){
     }
@@ -33,7 +33,7 @@ public class Stop {
     }
     
     public String getExternalUrl(){
-        return external_url;
+        return externalUrl;
     }
 
     @Override
@@ -43,7 +43,7 @@ public class Stop {
                 ", name='" + name + '\'' +
                 ", lat=" + lat +
                 ", lon=" + lon +
-                ", externalUrl='" + external_Url + '\'' +
+                ", externalUrl='" + externalUrl + '\'' +
                 '}';
     }
 

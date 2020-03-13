@@ -53,7 +53,7 @@ public class StopTime {
         return "StopTime{" +
                 "stopId='" + stopId + '\'' +
                 ", tripId=" + tripId +
-                ", stopSequence=" + stopSequence
+                ", stopSequence=" + stopSequence +
                 ", arrivalTime=" + arrivalTime +
                 ", departureTime=" + departureTime +
                 ", dropoffType=" + dropoffType +
