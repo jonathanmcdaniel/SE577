@@ -1,5 +1,7 @@
 package edu.drexel.TrainDemo.models;
 
+import java.util.Date;
+
 public class Passenger{
     private String firstName;
     private String lastName;
@@ -11,39 +13,39 @@ public class Passenger{
     private String phoneNo;
     private String emailAddress;
 
-    public getFirstName(){
+    public String getFirstName(){
         return firstName;
     }
 
-    public getLastName(){
+    public String getLastName(){
         return lastName;
     }
 
-    public getDob(){
+    public Date getDob(){
         return dob;
     }
 
-    public getAddress(){
+    public String getAddress(){
         return address;
     }
 
-    public getCity(){
+    public String getCity(){
         return city;
     }
 
-    public getState(){
+    public State getState(){
         return state;
     }
 
-    public getZip(){
+    public String getZip(){
         return zip;
     }
 
-    public getPhoneNo(){
+    public String getPhoneNo(){
         return phoneNo;
     }
 
-    public getEmailAddress(){
+    public String getEmailAddress(){
         return emailAddress;
     }
 

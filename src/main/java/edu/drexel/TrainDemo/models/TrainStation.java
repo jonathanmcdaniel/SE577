@@ -10,27 +10,27 @@ public class TrainStation {
     private String zip;
 
 
-    public getName(){
+    public String getName(){
         return name;
     }
 
-    public getAbbrName(){
+    public String getAbbrName(){
         return abbrName;
     }
 
-    public getAddress(){
+    public String getAddress(){
         return address;
     }
 
-    public getCity(){
+    public String getCity(){
         return city;
     }
 
-    public getState(){
+    public State getState(){
         return state;
     }
 
-    public getZip(){
+    public String getZip(){
         return zip;
     }
 

@@ -1,22 +1,24 @@
 package edu.drexel.TrainDemo.models;
 
+import java.util.ArrayList;
+
 public class Itinerary{
-    private ArrayList<Trip> itinerarySequence;
+    private ArrayList<Route> itinerarySequence;
     private double price;
 
-    public addTrip(Trip trip){
+    public void addTrip(Route trip){
         // Add Trip
     }
 
-    public deleteTrip(Trip trip){
+    public void deleteTrip(Route trip){
         // Delete Trip
     }
 
-    public getTrip(int index){
-        itinerarySequence.get(index);
+    public Route getTrip(int index){
+        return itinerarySequence.get(index);
     }
 
-    public getPrice(){
+    public double getPrice(){
         return price;
     }
 } 

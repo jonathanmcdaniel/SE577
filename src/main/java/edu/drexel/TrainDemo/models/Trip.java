@@ -1,43 +1,48 @@
 package edu.drexel.TrainDemo.models;
 
+import javax.swing.plaf.basic.BasicTreeUI;
+import java.sql.Time;
+import java.util.ArrayList;
+import java.util.Date;
+
 public class Route {
-    private TrainStation depatureStation;
+    private TrainStation departureStation;
     private TrainStation arrivalStation;
-    private DateTime departureTime;
-    private DateTime arrivalTime;
+    private Time departureTime;
+    private Time arrivalTime;
     private Train train;
     private double price;
     private ArrayList<Passenger> passengers;
 
-    public getDepartureStation(){
+    public TrainStation getDepartureStation(){
         return departureStation;
     }
 
-    public getArrivalStation(){
+    public TrainStation getArrivalStation(){
         return arrivalStation;
     }
 
-    public getDepartureTime(){
+    public Date getDepartureTime(){
         return departureTime;
     }
 
-    public getArrivalTime(){
+    public Date getArrivalTime(){
         return arrivalTime;
     }
 
-    public getTrain(){
+    public Train getTrain(){
         return train;
     }
 
-    public getPrice(){
-        return Price;
+    public double getPrice(){
+        return price;
     }
 
-    public getPassenger(int index){
+    public Passenger getPassenger(int index){
         passengers.get(index);
     }
 
-    public getPassengers(){
+    public ArrayList<Passenger> getPassengers(){
         return passengers;
     }
 

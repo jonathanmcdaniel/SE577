@@ -7,19 +7,19 @@ public class Train {
     private int coachSeats;
     private int economySeats;
 
-    public getName(){
+    public String getName(){
         return name;
     }
 
-    public getCapacity(){
+    public int getCapacity(){
         return capacity;
     }
 
-    public getCoachSeats(){
+    public int getCoachSeats(){
         return coachSeats;
     }
 
-    public getEconomySeats(){
+    public int getEconomySeats(){
         return economySeats;
     }
 
