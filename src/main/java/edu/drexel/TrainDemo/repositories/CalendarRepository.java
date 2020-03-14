@@ -7,6 +7,6 @@ import java.sql.Date;
 import java.util.List;
 
 public interface CalendarRepository extends CrudRepository<Calendar, Long> {
-    List<Calendar> findByStart_Date(Date startDate);
-    List<Calendar> findByEnd_Date(Date endDate);
+    // List<Calendar> findByStartDate(Date startDate);
+    // List<Calendar> findByEndDate(Date endDate);
 }

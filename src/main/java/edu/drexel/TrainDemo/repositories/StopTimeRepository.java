@@ -7,10 +7,10 @@ import java.sql.Time;
 import java.util.List;
 
 public interface StopTimeRepository extends CrudRepository<StopTime, String> {
-    List<StopTime> findByTrip_Id(long tripId);
-    List<StopTime> findByStop_Sequence(int stopSequence);
-    List<StopTime> findByArrival_Time(Time arrivalTime);
-    List<StopTime> findByDeparture_Time(Time departureTime);
-    List<StopTime> findByPickup_Type(int pickupType);
-    List<StopTime> findbyDropoff_Type(int dropoffType);
+    // List<StopTime> findByTripId(long tripId);
+    // List<StopTime> findByStopSequence(int stopSequence);
+    // List<StopTime> findByArrivalTime(Time arrivalTime);
+    // List<StopTime> findByDepartureTime(Time departureTime);
+    // List<StopTime> findByPickupType(int pickupType);
+    // List<StopTime> findbyDropoffType(int dropoffType);
 }
