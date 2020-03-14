@@ -1,21 +1,24 @@
-// package
-// imports
+// // package
 
-public class BusinessClassUpgrade extends TicketDecorator
-{
-    public businessClassUpgrade(Ticket ticket)
-    {
-        super(ticket);
-    }
+// import edu.drexel.TrainDemo.models.Ticket;
+// // imports
 
-    public String decorate()
-    {
-        return super.decorate() + decorateWithBusinessClassUpgrade();
-    }
+// public class BusinessClassUpgrade extends TicketDecorator
+// {
+//     public BusinessClassUpgrade(Ticket ticket)
 
-    public String decorateWithBusinessClassUpgrade()
-    {
-        return "Business Class";
-    }
+//     {
+//         super(ticket);
+//     }
 
-}  // End of BusinessClassUpgrade
+//     public String decorate()
+//     {
+//         return super.decorate() + decorateWithBusinessClassUpgrade();
+//     }
+
+//     public String decorateWithBusinessClassUpgrade()
+//     {
+//         return "Business Class";
+//     }
+
+// }  // End of BusinessClassUpgrade

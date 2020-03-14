@@ -1,61 +1,61 @@
-// package
-// imports
+// // package
+// // imports
 
-public class TicketServiceImpl implements TicketService
-{
+// public class TicketServiceImpl implements TicketService
+// {
 
-    private ArrayList<Ticket> tickets;
+//     private ArrayList<Ticket> tickets;
 
-    public String getPassenger()
-    {
-        // return passenger;
-    }
+//     public String getPassenger()
+//     {
+//         // return passenger;
+//     }
 
-    public String getDepartureStation();
-    {
-        // return departureStation;
-    }
+//     public String getDepartureStation();
+//     {
+//         // return departureStation;
+//     }
 
-    public String getArrivalStation();
-    {
-        // return arrivalStation
-    }
+//     public String getArrivalStation();
+//     {
+//         // return arrivalStation
+//     }
 
-    public DateTime getDepartureTime();
-    {
-        // return departureTime;
-    }
+//     public DateTime getDepartureTime();
+//     {
+//         // return departureTime;
+//     }
 
-    public DateTime getArrivalTime();
-    {
-        // return arrivalTime
-    }
+//     public DateTime getArrivalTime();
+//     {
+//         // return arrivalTime
+//     }
 
-    public String getTrainName();
-    {
-        // return trainName;
-    }
+//     public String getTrainName();
+//     {
+//         // return trainName;
+//     }
 
-    public String getClass();
-    {
-        // return class;
-    }
+//     public String getClass();
+//     {
+//         // return class;
+//     }
 
-    public Double getPrice();
-    {
-        // return price;
-    }
+//     public Double getPrice();
+//     {
+//         // return price;
+//     }
 
-    public Int getDurationTime();
-    {
-        // return durationTime;
-    }
+//     public Int getDurationTime();
+//     {
+//         // return durationTime;
+//     }
 
-    public Ticket getTicket();
-    {
-        // return ticket
-    }
+//     public Ticket getTicket();
+//     {
+//         // return ticket
+//     }
 
 
 
-} // End of TicketServiceImpl.
+// } // End of TicketServiceImpl.

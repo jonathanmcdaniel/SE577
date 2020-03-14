@@ -1,21 +1,23 @@
-// package
-// imports
+// // package
 
-public class SeniorCitizenDiscount extends TicketDecorator
-{
-    public seniorCitizenDiscount(Ticket ticket)
-    {
-        super(ticket);
-    }
+// import edu.drexel.TrainDemo.models.Ticket;
+// // imports
 
-    public String decorate()
-    {
-        return super.decorate() + decorateWithSeniorCitizenDiscount();
-    }
+// public class SeniorCitizenDiscount extends TicketDecorator
+// {
+//     public SeniorCitizenDiscount(Ticket ticket)
+//     {
+//         super(ticket);
+//     }
 
-    public String decorateWithSeniorCitizenDiscount()
-    {
-        return "Senior Citizen Discount";
-    }
+//     public String decorate()
+//     {
+//         return super.decorate() + decorateWithSeniorCitizenDiscount();
+//     }
 
-}  // End of SeniorCitizenDiscount
+//     public String decorateWithSeniorCitizenDiscount()
+//     {
+//         return "Senior Citizen Discount";
+//     }
+
+// }  // End of SeniorCitizenDiscount

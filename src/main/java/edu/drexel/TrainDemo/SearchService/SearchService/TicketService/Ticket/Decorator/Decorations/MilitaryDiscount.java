@@ -1,21 +1,23 @@
-// package
-// imports
+// // package
 
-public class MilitaryDiscount extends TicketDecorator
-{
-    public militaryDiscount(Ticket ticket)
-    {
-        super(ticket);
-    }
+// import edu.drexel.TrainDemo.models.Ticket;
+// // imports
 
-    public String decorate()
-    {
-        return super.decorate() + decorateWithMilitaryDiscount();
-    }
+// public class MilitaryDiscount extends TicketDecorator
+// {
+//     public MilitaryDiscount(Ticket ticket)
+//     {
+//         super(ticket);
+//     }
 
-    public String decorateWithMilitaryDiscount()
-    {
-        return "Military Discount";
-    }
+//     public String decorate()
+//     {
+//         return super.decorate() + decorateWithMilitaryDiscount();
+//     }
 
-}  // End of MilitaryDiscount
+//     public String decorateWithMilitaryDiscount()
+//     {
+//         return "Military Discount";
+//     }
+
+// }  // End of MilitaryDiscount

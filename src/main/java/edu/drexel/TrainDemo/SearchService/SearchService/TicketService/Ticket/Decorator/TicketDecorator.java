@@ -1,14 +1,16 @@
-// package
-// imports
+// // package
 
-public abstract class TicketDecorator extends Ticket
-{
+// import edu.drexel.TrainDemo.models.Ticket;
+// // imports
 
-    private Ticket ticket;
+// public abstract class TicketDecorator extends Ticket
+// {
 
-    public String decorate()
-    {
-        return ticket.decorate();
-    }
+//     private Ticket ticket;
 
-} // End of TicketDecorator
+//     public String decorate()
+//     {
+//         return ticket.decorate();
+//     }
+
+// } // End of TicketDecorator

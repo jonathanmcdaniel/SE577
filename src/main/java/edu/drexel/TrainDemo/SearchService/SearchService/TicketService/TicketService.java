@@ -1,28 +1,30 @@
-// package
-// imports
+// import java.time.LocalDateTime;
 
-public interface TicketService
-{
+// // package
+// // imports
 
-    public String getPassenger();
+// public interface TicketService
+// {
 
-    public String getDepartureStation();
+//     public String getPassenger();
 
-    public String getArrivalStation();
+//     public String getDepartureStation();
 
-    public DateTime getDepartureTime();
+//     public String getArrivalStation();
 
-    public DateTime getArrivalTime();
+//     public LocalDateTime getDepartureTime();
 
-    public String getTrainName();
+//     public DateTime getArrivalTime();
 
-    public String getClass();
+//     public String getTrainName();
 
-    public Double getPrice();
+//     public String getClass();
 
-    public Int getDurationTime();
+//     public Double getPrice();
 
-    public Ticket getTicket();
+//     public Int getDurationTime();
+
+//     public Ticket getTicket();
 
 
-} // End of TicketService.
+// } // End of TicketService.

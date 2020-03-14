@@ -1,17 +1,17 @@
-// package
-// imports
+// // package
+// // imports
 
-public interface SearchService
-{
+// public interface SearchService
+// {
 
-    public void index(Ticket ticket);
+//     public void index(Ticket ticket);
 
-    public void deleteIndex(Ticket ticket);
+//     public void deleteIndex(Ticket ticket);
 
-    public SearchKeywords searchForKeywords(String collectionName, String jsonString, int entriesCount);
+//     public SearchKeywords searchForKeywords(String collectionName, String jsonString, int entriesCount);
 
-    public SearchResponse search(String languageCode, String jsonString, int entriesCount, int startIndex);
+//     public SearchResponse search(String languageCode, String jsonString, int entriesCount, int startIndex);
 
-    public void initService();
+//     public void initService();
 
-} // End of Search Service.
+// } // End of Search Service.
