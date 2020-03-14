@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface RouteRepository extends CrudRepository<Route, Long> {
     List<Route> findByAgency_Id(long agencyId);
-    // List<Route> findByName(String name);
-    // List<Route> findByRoute_Type(RouteType routeType);
+    List<Route> findByName(String name);
+    List<Route> findByRouteType(RouteType routeType);
 }
