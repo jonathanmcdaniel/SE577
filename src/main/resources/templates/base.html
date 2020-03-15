@@ -31,7 +31,10 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="dropdown-item" th:href="@{/about}">About</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -39,8 +42,8 @@
                     <a class="nav-link dropdown-toggle" href="#" id="profile-name" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false"></a>
                     <div class="dropdown-menu" aria-labelledby="profile-name">
-                        <a class="dropdown-item" href="/customer/dashboard.html">My Account</a>
-                        <a class="dropdown-item" href="#" onclick="logout()">Sign Out</a>
+                        <a class="dropdown-item" th:href="@{/user/dashboard}">My Account</a>
+                        <a class="dropdown-item" href="/" onclick="logout()">Sign Out</a>
                     </div>
                 </li>
                 <li class="ml-auto nav-item unauthenticated">
