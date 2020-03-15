@@ -1,6 +1,14 @@
-# Train Demo
+# Group 4 TrainTicket System
 
-Train Demo is a web application that simulates planning a trip and purchasing tickets for a train or bus ride. It uses real Amtrak data retrieved via a [FOIA request](https://www.muckrock.com/foi/united-states-of-america-10/machine-readable-amtrak-schedules-fares-and-stoproute-alignments-25904/). It is only partially implemented. The remaining features are left as an exercise.
+TrainTicket System is a web application that simulates planning a trip and purchasing tickets for a train or bus ride. It uses real Amtrak data retrieved via a [FOIA request](https://www.muckrock.com/foi/united-states-of-america-10/machine-readable-amtrak-schedules-fares-and-stoproute-alignments-25904/). It is only partially implemented. The remaining features are left as an exercise.
+
+| [All Use Cases](https://github.com/jonathanmcdaniel/SE577/issues?q=sort%3Acreated-asc) | [Completed Use Cases](https://github.com/jonathanmcdaniel/SE577/issues?q=label%3AComplete) | 
+[In Progress Use Cases](https://github.com/jonathanmcdaniel/SE577/issues?q=label%3A%22In+Progress%22) | 
+[Not Started Use Cases](https://github.com/jonathanmcdaniel/SE577/issues?q=label%3A%22Not+Started%22) |
+|---|---|---|---|
+
+## Notes to Instructor
+Changes have been made and will still need to be made to the system that deviate from what was orginally documented in deliverables 1 and 2. Updated documentation will be provided as part of our final submission.
 
 ## Getting Started
 
@@ -76,7 +84,7 @@ To complete this application, you will have to introduce many new terms to descr
 
 8. __Reservation__ - A reservation is what a customer actually pays for. It may include many tickets for many people.
 
-## Use Cases
+## Use Cases (Legacy)
 
 These use cases outline what and how users will do on this website.
 
@@ -152,4 +160,4 @@ These use cases outline what and how users will do on this website.
 
 ## Integration
 
-To complete the above use cases, your system will have to integrate with many existing systems. For authorization, you will have to integrate with (multiple) OAuth2 providers. For processing payments, you will have to integrate with a credit card processor (such as Strip) and PayPal. (You could even support Venmo, cryptocurrencies, or mail-in-checks.) To provide attractions near destinations, you will need to integrate with something like Google Maps or Yelp. You should not expect these services to always to be online or fully functional. Your system should gracefully handle outages and unexpected behavior.
+To complete the above use cases, your system will have to integrate with many existing systems. For authorization, you will have to integrate with (multiple) OAuth2 providers. For processing payments, you will have to integrate with a credit card processor (such as Stripe) and PayPal. (You could even support Venmo, cryptocurrencies, or mail-in-checks.) To provide attractions near destinations, you will need to integrate with something like Google Maps or Yelp. You should not expect these services to always to be online or fully functional. Your system should gracefully handle outages and unexpected behavior.
