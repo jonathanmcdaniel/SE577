@@ -7,7 +7,7 @@ public class Stop {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private String id;
     private String name;
     private Double lat;
     private Double lon;
@@ -16,7 +16,7 @@ public class Stop {
     protected Stop(){
     }
 
-    public Long getId(){
+    public String getId(){
         return id;
     }
 
