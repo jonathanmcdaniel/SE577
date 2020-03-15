@@ -5,12 +5,20 @@ import java.sql.Time;
 import javax.persistence.*;
 
 @Entity
+@IdClass(StopTimeId.class)
 public class StopTime {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String stopId;
-    private Long tripId;
+    @ManyToOne
+    private Stop stop;
+
+    @Id
+    @ManyToOne
+    private Trip trip;
+
+    // @GeneratedValue(strategy = GenerationType.AUTO)
+    // private String stopId;
+    // private Long tripId;
     private int stopSequence;
     private Time arrivalTime;
     private Time departureTime;
@@ -20,12 +28,12 @@ public class StopTime {
     protected StopTime(){
     }
 
-    public String getStopId(){
-        return stopId;
+    public Stop getStop(){
+        return stop;
     }
 
-    public Long getTripId(){
-        return tripId;
+    public Trip getTrip(){
+        return trip;
     }
 
     public int getStopSequence(){
@@ -51,8 +59,8 @@ public class StopTime {
     @Override
     public String toString() {
         return "StopTime{" +
-                "stopId='" + stopId + '\'' +
-                ", tripId=" + tripId +
+                "stopId='" + stop + '\'' +
+                ", tripId=" + trip +
                 ", stopSequence=" + stopSequence +
                 ", arrivalTime=" + arrivalTime +
                 ", departureTime=" + departureTime +
