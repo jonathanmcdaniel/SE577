@@ -1,8 +1,8 @@
-package edu.drexel.TrainDemo.models
+package edu.drexel.TrainDemo.models;
 
 /* Used to filter lists */
 
-public class listCriteria {
+public class ListCriteria {
 	private String name;
 	private String type;
 	
