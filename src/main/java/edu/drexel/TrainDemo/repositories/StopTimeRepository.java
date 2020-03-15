@@ -13,4 +13,5 @@ public interface StopTimeRepository extends CrudRepository<StopTime, String> {
     List<StopTime> findByDepartureTime(Time departureTime);
     List<StopTime> findByPickupType(int pickupType);
     List<StopTime> findByDropoffType(int dropoffType);
+    List<StopTime> findByTripIdAndStopId(long tripId, String stopId);
 }
