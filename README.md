@@ -2,9 +2,9 @@
 
 TrainTicket System is a web application that simulates planning a trip and purchasing tickets for a train or bus ride. It uses real Amtrak data retrieved via a [FOIA request](https://www.muckrock.com/foi/united-states-of-america-10/machine-readable-amtrak-schedules-fares-and-stoproute-alignments-25904/). It is only partially implemented. The remaining features are left as an exercise.
 
-| [All Use Cases](https://github.com/jonathanmcdaniel/SE577/issues?q=sort%3Acreated-asc) | [Completed Use Cases](https://github.com/jonathanmcdaniel/SE577/issues?q=label%3AComplete) | 
-[In Progress Use Cases](https://github.com/jonathanmcdaniel/SE577/issues?q=label%3A%22In+Progress%22) | 
-[Not Started Use Cases](https://github.com/jonathanmcdaniel/SE577/issues?q=label%3A%22Not+Started%22) |
+| [All Use Cases](https://github.com/jonathanmcdaniel/SE577/issues?q=sort%3Acreated-asc) | [Completed Use Cases](https://github.com/jonathanmcdaniel/SE577/issues?q=label%3AComplete+sort%3Acreated-asc) | 
+[In Progress Use Cases](https://github.com/jonathanmcdaniel/SE577/issues?q=label%3A%22In+Progress%22+sort%3Acreated-asc) | 
+[Not Started Use Cases](https://github.com/jonathanmcdaniel/SE577/issues?q=label%3A%22Not+Started%22+sort%3Acreated-asc) |
 |---|---|---|---|
 
 ## Notes to Instructor
