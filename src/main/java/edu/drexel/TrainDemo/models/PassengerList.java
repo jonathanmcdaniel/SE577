@@ -1,6 +1,4 @@
-package edu.java.TrainDemo.models;
-
-import edu.drexel.TrainDemo.models.Passenger;
+package edu.drexel.TrainDemo.models;
 
 import java.util.List;
 
