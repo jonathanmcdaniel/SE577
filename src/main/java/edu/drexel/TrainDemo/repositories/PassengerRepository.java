@@ -8,7 +8,7 @@ import java.util.List;
 public interface PassengerRepository extends CrudRepository<Passenger, Long> {
   List<Passenger> findByName(String name);
   List<Passenger> findByAddress(String address);
-  List<Passenger> findByPhone (String phone);
-  List<Passenger> findByEmailAddress (String emailaddress);
+  List<Passenger> findByPhone(String phone);
+  List<Passenger> findByEmailAddress(String emailaddress);
   
 }
