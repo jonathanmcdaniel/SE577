@@ -15,9 +15,10 @@ import java.util.Map;
 @Controller
 public class UserController {
 
-    @RequestMapping("/user")
+    @GetMapping("/user")
     @ResponseBody
     public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
+        System.out.println("USER");
         return Collections.singletonMap("name", principal.getAttribute("name"));
     }
 
@@ -26,5 +27,4 @@ public class UserController {
         System.out.println("user/dashboard");
         return "user/dashboard";
     }
-
 }
