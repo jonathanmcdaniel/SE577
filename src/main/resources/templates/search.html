@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="base::header"/>
+</head>
+<body>
+<th:block th:replace="base::navbar"/>
+<main role="main">
+    <div class="jumbotron">
+        <div class="container">
+            <div class="display-3">
+                <h1>Search Routes!</h1>
+            </div>
+            <div class="container">
+                <form id="SearchForm" method="post" action="/search"> <!--TODO: Add action-->
+                    <span class="form-label">From: </span>
+                    <select class="form-control">
+                        <option th:each="stop: ${stops}" th:text="${stop.id} + ' - ' + ${stop.name}" th:value="${stop.id}"></option>
+                    </select>
+                    <span class="form-label">To: </span>
+                    <select class="form-control">
+                        <option th:each="stop: ${stops}" th:text="${stop.id} + ' - ' + ${stop.name}" th:value="${stop.id}"></option>
+                    </select>
+                    <div class="form-btn">
+                        <button class="submit-btn">Search!</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

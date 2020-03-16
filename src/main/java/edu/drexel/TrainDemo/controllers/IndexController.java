@@ -16,6 +16,5 @@ public class IndexController {
         System.out.println("about");
         return "about";
     }
-
-
+    
 }
