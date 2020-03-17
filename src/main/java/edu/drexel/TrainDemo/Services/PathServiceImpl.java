@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.drexel.TrainDemo.models.Path;
+import edu.drexel.TrainDemo.models.PathSorter;
 import edu.drexel.TrainDemo.models.Stop;
 import edu.drexel.TrainDemo.models.StopTime;
 import edu.drexel.TrainDemo.repositories.CalendarRepository;
@@ -56,17 +57,15 @@ public class PathServiceImpl implements PathService {
                             // Check to see if the "from" Stop occurs before the "to" Stop in the trip sequence.  If so...
                             if(fromStopTime.getStopSequence() < toStopTime.getStopSequence()){
                                 
-                                // Get the fromStop, toStop, departureTime, and arrivalTime
+                                // Get the date, fromStop, toStop, departureTime, and arrivalTime
+                                Date departureDate = calendarRepo.findById(fromStopTime.getTrip().getCalendarId()).get().getStartDate();
                                 Stop fromStop = stopRepo.findById(from).get();
                                 Stop toStop = stopRepo.findById(to).get();
                                 Time departureTime = fromStopTime.getDepartureTime();
                                 Time arrivalTime = toStopTime.getArrivalTime();
 
-                                // Get the departure date
-                                Date departureDate = calendarRepo.findById(fromStopTime.getTrip().getCalendarId()).get().getStartDate();
-
                                 // Create the path and add it to the list of paths
-                                Path path = new Path(fromStop, toStop, departureTime, arrivalTime, departureDate);
+                                Path path = new Path(departureDate, fromStop, toStop, departureTime, arrivalTime);
                                 paths.add(path);
 
                             }
@@ -76,7 +75,11 @@ public class PathServiceImpl implements PathService {
             }            
         }
 
-        // Return the paths 
+        // Sort the paths
+        PathSorter pathSorter = new PathSorter(paths);
+        paths = pathSorter.sortPaths();
+
+        // Return the sorted paths
         return paths;
     }
 }
