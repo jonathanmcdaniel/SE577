@@ -9,6 +9,14 @@ public class StopTimeId implements Serializable {
     private Stop stop;
     private Trip trip;
 
+    // public StopTimeId(){
+    // }
+
+    // public StopTimeId(Long stopId, Long tripId){
+    //     this.stopId = stopId;
+    //     this.tripId = tripId;
+    // }
+    
     // protected StopTimeId(){
     // }
 
