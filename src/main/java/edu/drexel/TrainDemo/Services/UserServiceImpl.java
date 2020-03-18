@@ -1,12 +1,15 @@
 package edu.drexel.TrainDemo.Services;
 
 import edu.drexel.TrainDemo.Utils;
+import edu.drexel.TrainDemo.models.Address;
 import edu.drexel.TrainDemo.models.UserEntity;
+import edu.drexel.TrainDemo.repositories.AddressRepository;
 import edu.drexel.TrainDemo.repositories.UserRepository;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
+import sun.rmi.rmic.Util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +22,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepo;
+
+    @Autowired
+    private AddressRepository addressRepo;
 
     @Override
     public List<UserEntity> getUsers() {
@@ -71,4 +77,30 @@ public class UserServiceImpl implements UserService {
     public void removeUser(OAuth2User principal) {
         this.userRepo.delete(getUser(principal));
     }
+
+
+    @Override
+    public List<Address> getBillingAddresses(OAuth2User principal) {
+        return this.addressRepo.findAddressesByUserIdAndIsBilling(this.getIdFromOAuth(principal), true);
+    }
+
+    @Override
+    public List<Address> getMailingAddresses(OAuth2User principal) {
+        return this.addressRepo.findAddressesByUserIdAndIsBilling(this.getIdFromOAuth(principal), false);
+    }
+
+    @Override
+    public void saveAddress(OAuth2User principal, Address address) {
+        this.addressRepo.save(address);
+    }
+
+    /**
+     * Helper method to get user id from principal.
+     * @param principal
+     * @return
+     */
+    public long getIdFromOAuth(OAuth2User principal) {
+        return Utils.intToLong(principal.getAttribute("id"));
+    }
+
 }

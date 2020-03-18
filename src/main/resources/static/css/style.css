@@ -2,3 +2,23 @@
 {
     display:none;
 }
+
+div.address-container {
+    border: 1px solid;
+    padding: 1rem;
+    box-shadow: 5px 10px 10px #888888;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    display: block;
+}
+
+div.list-row {
+    padding: 10px;
+
+}
+
+div.address {
+    margin-left: 20px;
+    margin-right: 20px;
+}

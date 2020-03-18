@@ -42,8 +42,8 @@ public class UserController {
 
     @RequestMapping("/user/billing")
     String userBilling(@AuthenticationPrincipal OAuth2User principal, Model model) {
-        System.out.println((int) principal.getAttribute("id"));
-        System.out.println(principal.getAttributes());
+        Long userid = Utils.intToLong(principal.getAttribute("id"));
+
         return "user/billing";
     }
 

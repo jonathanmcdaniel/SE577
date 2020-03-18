@@ -15,5 +15,6 @@ CREATE TABLE address (
     city TEXT NOT NULL,
     state TEXT NOT NULL,
     zip TEXT NOT NULL,
-    user_id BIGINT NOT NULL)
+    user_id BIGINT NOT NULL,
+    is_billing BOOLEAN NOT NULL)
 WITH (OIDS = FALSE);
