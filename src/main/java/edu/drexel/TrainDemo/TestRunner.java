@@ -1,11 +1,11 @@
 package edu.drexel.TrainDemo;
 
-import edu.drexel.TrainDemo.models.Calendar;
-import edu.drexel.TrainDemo.models.Route;
-import edu.drexel.TrainDemo.models.Stop;
-import edu.drexel.TrainDemo.models.StopTime;
-import edu.drexel.TrainDemo.models.Trip;
-import edu.drexel.TrainDemo.repositories.*;
+import edu.drexel.TrainDemo.models.core.Calendar;
+import edu.drexel.TrainDemo.models.core.Route;
+import edu.drexel.TrainDemo.models.core.Stop;
+import edu.drexel.TrainDemo.models.core.StopTime;
+import edu.drexel.TrainDemo.models.core.Trip;
+import edu.drexel.TrainDemo.repositories.core.*;
 
 import org.slf4j.Logger;
 import org.springframework.boot.ApplicationArguments;

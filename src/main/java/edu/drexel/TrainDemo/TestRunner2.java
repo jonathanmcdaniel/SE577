@@ -1,9 +1,9 @@
 package edu.drexel.TrainDemo;
 
-import edu.drexel.TrainDemo.models.Path;
-import edu.drexel.TrainDemo.models.StopTime;
-import edu.drexel.TrainDemo.repositories.StopTimeRepository;
-import edu.drexel.TrainDemo.Services.PathService;
+import edu.drexel.TrainDemo.models.search.Path;
+import edu.drexel.TrainDemo.models.core.StopTime;
+import edu.drexel.TrainDemo.repositories.core.StopTimeRepository;
+import edu.drexel.TrainDemo.services.search.PathService;
 
 import org.slf4j.Logger;
 import org.springframework.boot.ApplicationArguments;

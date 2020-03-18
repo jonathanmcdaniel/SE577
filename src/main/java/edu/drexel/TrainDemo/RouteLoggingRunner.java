@@ -1,7 +1,7 @@
 package edu.drexel.TrainDemo;
 
-import edu.drexel.TrainDemo.models.Route;
-import edu.drexel.TrainDemo.repositories.RouteRepository;
+import edu.drexel.TrainDemo.models.core.Route;
+import edu.drexel.TrainDemo.repositories.core.RouteRepository;
 import org.slf4j.Logger;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
