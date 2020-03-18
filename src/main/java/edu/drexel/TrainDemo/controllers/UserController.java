@@ -48,9 +48,9 @@ public class UserController {
     }
 
     @RequestMapping("/user/new")
-    String newUser(@AuthenticationPrincipal OAuth2User principal, @RequestParam String firstName, @RequestParam String lastName) {
+    RedirectView newUser(@AuthenticationPrincipal OAuth2User principal, @RequestParam String firstName, @RequestParam String lastName) {
         System.out.println(principal.getAttribute("id") + " | " + firstName + " | " + lastName);
         this.userService.createUser(Utils.intToLong(principal.getAttribute("id")), firstName, lastName);
-        return "index";
+        return new RedirectView("/");
     }
 }

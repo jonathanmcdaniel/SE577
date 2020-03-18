@@ -1,12 +1,13 @@
 package edu.drexel.TrainDemo.repositories;
 
-import edu.drexel.TrainDemo.models.User;
+import edu.drexel.TrainDemo.models.UserEntity;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface UserRepository extends CrudRepository<UserEntity, Long> {
 
-    List<User> findByLastName(String lastName);
-    User findById(long id);
+    List<UserEntity> findByLastName(String lastName);
+    UserEntity findById(long id);
+    UserEntity findByExternalId(long externalId);
 }

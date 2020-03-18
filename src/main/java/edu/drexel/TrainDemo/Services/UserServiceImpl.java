@@ -1,14 +1,17 @@
 package edu.drexel.TrainDemo.Services;
 
-import edu.drexel.TrainDemo.models.User;
+import edu.drexel.TrainDemo.Utils;
+import edu.drexel.TrainDemo.models.UserEntity;
 import edu.drexel.TrainDemo.repositories.UserRepository;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
@@ -18,43 +21,49 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepo;
 
     @Override
-    public List<User> getUsers() {
-        List<User> allUsers = new ArrayList<>();
+    public List<UserEntity> getUsers() {
+        List<UserEntity> allUsers = new ArrayList<>();
         this.userRepo.findAll().forEach(allUsers::add);
         return allUsers;
     }
 
     @Override
-    public User getUser(OAuth2User principal) {
-        long id = principal.getAttribute("id");
+    public UserEntity getUser(OAuth2User principal) {
+        long id = Utils.intToLong(principal.getAttribute("id"));
         return getUser(id);
     }
 
     @Override
-    public User getUser(long id) {
-        User user = this.userRepo.findById(id);
+    public UserEntity getUser(long id) {
+        UserEntity user = this.userRepo.findByExternalId(id);
 
-        // TODO: If user does not exist, then create the user.
+        // TODO: If user does not exist, then create the user. Possibly
         if (user == null) {
-            user = createUser(id);
+            //user = createUser(id, "x", "x");
+        } else {
+            System.out.println("getUser: " + user.getExternalId() + " | " + user.getFirstName() + " | " + user.getLastName());
         }
 
         return user;
     }
 
     @Override
-    public User createUser(long id) {
-        return new User("John", "Doe", id);
+    public UserEntity createUser(long id, String firstName, String lastName) {
+        UserEntity newUser = new UserEntity(firstName, lastName, id);
+        System.out.println("createUser: " + newUser.getExternalId() + " | " + newUser.getFirstName() + " | " + newUser.getLastName());
+        this.userRepo.save(newUser);
+        getUser(id);
+        return newUser;
     }
 
     @Override
-    public void saveUser(OAuth2User principal, User newUser) {
-        User oldUser = getUser(principal);
+    public void saveUser(OAuth2User principal, UserEntity newUser) {
+        UserEntity oldUser = getUser(principal);
         saveUser(oldUser, newUser);
     }
 
     @Override
-    public void saveUser(User oldUser, User newUser) {
+    public void saveUser(UserEntity oldUser, UserEntity newUser) {
         // TODO: Implement this
     }
 

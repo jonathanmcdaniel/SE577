@@ -14,6 +14,9 @@ $.ajaxSetup({
 
 $.get("/user", function (data) {
     $("#profile-name").html(data.name);
+    if (data.name == null) {
+        $("#newAccountModal").modal("show");
+    }
     $(".unauthenticated").hide();
     $(".authenticated").show();
 }).fail(function () {

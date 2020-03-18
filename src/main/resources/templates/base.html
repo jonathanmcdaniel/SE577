@@ -17,6 +17,7 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.js"></script>
         <script type="text/javascript" src="/js/script.js"></script>
+        <script type="text/javascript" src="/js/user.js"></script>
     </th:block>
 </head>
 <body>
@@ -69,6 +70,34 @@
                     <a class="btn btn-block btn-social btn-google" href="/oauth2/authorization/google" role="button">
                         <span class="fa fa-google"></span> Sign in with Google
                     </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="newAccountModal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newAccountModalLongTitle">New Account</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>It seems you are a new user on the site. We need this bit of information about you as a passenger.</p>
+                    <form>
+                        <div class="form-group">
+                            <label for="fname">First Name:</label>
+                            <input type="text" class="form-control" id="fname">
+                        </div>
+                        <div class="form-group">
+                            <label for="lname">Last Name:</label>
+                            <input type="text" class="form-control" id="lname">
+                        </div>
+                        <div class="form-group">
+                            <button onclick="addUser()">Save</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
