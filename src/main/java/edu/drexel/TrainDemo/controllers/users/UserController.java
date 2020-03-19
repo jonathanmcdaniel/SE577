@@ -1,15 +1,10 @@
 package edu.drexel.TrainDemo.controllers.users;
 
-<<<<<<< HEAD:src/main/java/edu/drexel/TrainDemo/controllers/users/UserController.java
+import edu.drexel.TrainDemo.models.users.Address;
 import edu.drexel.TrainDemo.services.users.UserService;
 import edu.drexel.TrainDemo.Utils;
 import edu.drexel.TrainDemo.models.users.UserEntity;
-=======
-import edu.drexel.TrainDemo.Services.UserService;
-import edu.drexel.TrainDemo.models.users.Address;
-import edu.drexel.TrainDemo.models.State;
-import edu.drexel.TrainDemo.models.UserEntity;
->>>>>>> dylan-workspace:src/main/java/edu/drexel/TrainDemo/controllers/UserController.java
+import edu.drexel.TrainDemo.models.core.State;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -66,9 +61,9 @@ public class UserController {
     }
 
     @RequestMapping("/user/new")
-    RedirectView newUser(@AuthenticationPrincipal OAuth2User principal, @RequestParam String firstName, @RequestParam String lastName) {
+    RedirectView newUser(@AuthenticationPrincipal OAuth2User principal, @RequestParam String firstName, @RequestParam String lastName, @RequestParam String phoneNumber) {
         System.out.println(principal.getAttribute("id") + " | " + firstName + " | " + lastName);
-        this.userService.createUser(Utils.intToLong(principal.getAttribute("id")), firstName, lastName);
+        this.userService.createUser(Utils.intToLong(principal.getAttribute("id")), firstName, lastName, phoneNumber);
         return new RedirectView("/");
     }
 

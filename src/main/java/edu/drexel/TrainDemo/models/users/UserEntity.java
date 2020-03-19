@@ -19,7 +19,10 @@ public class UserEntity implements Serializable {
     @Column(name = "last_name")
     private String lastName;
 
-    // TODO: Add email and phone number? Would need to update database tables
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
+    // TODO: Add email only if needed? Would need to update database tables
 
     @Column(name = "is_admin")
     private Boolean isAdmin;
@@ -29,9 +32,10 @@ public class UserEntity implements Serializable {
 
     public UserEntity(){}
 
-    public UserEntity(String firstName, String lastName, long clientid) {
+    public UserEntity(String firstName, String lastName, String phoneNumber, long clientid) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
         this.externalId = clientid;
         this.isAdmin = false;
     }

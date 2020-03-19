@@ -54,8 +54,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserEntity createUser(long id, String firstName, String lastName) {
-        UserEntity newUser = new UserEntity(firstName, lastName, id);
+    public UserEntity createUser(long id, String firstName, String lastName, String phoneNumber) {
+        UserEntity newUser = new UserEntity(firstName, lastName, phoneNumber, id);
         System.out.println("createUser: " + newUser.getExternalId() + " | " + newUser.getFirstName() + " | " + newUser.getLastName());
         this.userRepo.save(newUser);
         getUser(id);

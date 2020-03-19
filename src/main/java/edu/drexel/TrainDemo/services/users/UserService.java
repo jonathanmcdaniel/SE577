@@ -13,7 +13,7 @@ public interface UserService {
     List<UserEntity> getUsers();
     UserEntity getUser(OAuth2User principal);
     UserEntity getUser(long id);
-    UserEntity createUser(long id, String firstName, String lastName);
+    UserEntity createUser(long id, String firstName, String lastName, String phoneNumber);
     void saveUser(OAuth2User principal, UserEntity newUser);
     void saveUser(UserEntity user, UserEntity newUser);
     void removeUser(OAuth2User principal);
