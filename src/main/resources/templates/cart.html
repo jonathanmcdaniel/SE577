@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="base::header"/>
+</head>
+<body>
+<th:block th:replace="base::navbar"/>
+<main role="main">
+    <div class="jumbotron">
+        <div class="container">
+            <h1>My Cart</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="container">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Departure Date</th>
+                        <th scope="col">Departure Station</th>
+                        <th scope="col">Arrival Station</th>
+                        <th scope="col">Departure Time</th>
+                        <th scope="col">Arrival Time</th>
+                        <th scope="col">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <th:block th:each="item : ${items}">
+                        <tr>
+                            <td th:text="${item.departureDate}"></td>
+                            <td th:text="${item.from}"></td>
+                            <td th:text="${item.to}"></td>
+                            <td th:text="${item.departureTime}"></td>
+                            <td th:text="${item.arrivalTime}"></td>
+                            <td th:text="${item.price}"></td>
+                        </tr>
+                    </th:block>
+                </tbody>
+            </table>
+            <span th:if="${items.isEmpty()}">Your cart is empty.</span>
+        </div>
+    </div>
+</main>
+</body>
+</html>

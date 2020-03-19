@@ -1,6 +1,6 @@
 // // package
 
-// import edu.drexel.TrainDemo.models.Ticket;
+// import edu.drexel.TrainDemo.models.ticket.decorators;
 // // imports
 
 // public abstract class TicketDecorator extends Ticket

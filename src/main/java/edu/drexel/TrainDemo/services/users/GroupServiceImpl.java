@@ -1,13 +1,13 @@
-package edu.drexel.TrainDemo.services;
+package edu.drexel.TrainDemo.services.users;
 
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.slf4j.Logger;
-import edu.drexel.TrainDemo.models.Group;
-import edu.drexel.TrainDemo.models.GroupType;
-import edu.drexel.TrainDemo.repositories.GroupRepository;
+import edu.drexel.TrainDemo.models.users.Group;
+import edu.drexel.TrainDemo.models.users.GroupType;
+import edu.drexel.TrainDemo.repositories.users.GroupRepository;
 
 public class GroupServiceImpl implements GroupService
 {

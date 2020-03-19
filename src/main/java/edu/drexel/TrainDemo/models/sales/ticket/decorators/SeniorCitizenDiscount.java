@@ -1,6 +1,6 @@
 // // package
 
-// import edu.drexel.TrainDemo.models.Ticket;
+// import edu.drexel.TrainDemo.models.ticket.decorators;
 // // imports
 
 // public class SeniorCitizenDiscount extends TicketDecorator

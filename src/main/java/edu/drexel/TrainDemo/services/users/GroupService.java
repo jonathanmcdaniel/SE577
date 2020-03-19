@@ -1,10 +1,10 @@
-package edu.drexel.TrainDemo.services;
+package edu.drexel.TrainDemo.services.users;
 
 import java.util.List;
 import java.util.Set;
 
-import edu.drexel.TrainDemo.models.Group;
-import edu.drexel.TrainDemo.models.GroupType;
+import edu.drexel.TrainDemo.models.users.Group;
+import edu.drexel.TrainDemo.models.users.GroupType;
 
 public interface GroupService
 {

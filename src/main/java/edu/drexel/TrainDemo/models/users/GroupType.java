@@ -1,4 +1,4 @@
-package edu.drexel.TrainDemo.models;
+package edu.drexel.TrainDemo.models.users;
 
 public enum GroupType
 {
