@@ -1,21 +1,35 @@
-/*
-
-package edu.drexel.TrainDemo.models.users;
+package edu.drexel.TrainDemo.models;
 
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import edu.drexel.TrainDemo.models.GroupType;
+
+@Entity
 public class Group
 {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String groupName;
     private Integer groupId;
     private GroupType groupType;
-    private Set<Permissions> permission = new HashSet<>();
 
-    public Group(String groupName)
+    protected Group()
+    {
+
+    }
+
+    public Group(String groupName, GroupType groupType, Integer groupId)
     {
         this.groupName = groupName;
+        this.groupType = groupType;
+        this.groupId = groupId;
     }
 
     public String getGroupName()
@@ -23,19 +37,9 @@ public class Group
         return groupName;
     }
 
-    public void setGroupName(String groupName)
-    {
-        this.groupName = groupName;
-    }
-
     public GroupType getGroupType()
     {
         return groupType;
-    }
-
-    public void setGroupType(GroupType groupType)
-    {
-        this.groupType = groupType;
     }
 
     public Integer getGroupId()
@@ -43,21 +47,13 @@ public class Group
         return groupId;
     }
 
-    public void setGroupId(Integer groupId)
-    {
-        this.groupId = groupId;
-    }
-
-    public Set<Permissions> getPermissions()
-    {
-        return permission;
-    }
-
-    public void setPermissions(Set<Permissions> permission)
-    {
-        this.permission = permission;
+    @Override
+    public String toString() {
+        return "Group{" +
+                "id=" + groupId +
+                ", name='" + groupName +
+                ", type='" + groupType +'\'' +
+                '}';
     }
 
 } // End of Group.
-
-*/

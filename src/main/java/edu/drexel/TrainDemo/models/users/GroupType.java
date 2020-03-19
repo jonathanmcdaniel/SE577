@@ -1,6 +1,4 @@
-/*
-
-package edu.drexel.TrainDemo.models.users;
+package edu.drexel.TrainDemo.models;
 
 public enum GroupType
 {
@@ -8,5 +6,3 @@ public enum GroupType
 	Employee, Customer
 
 } // End of GroupType.
-
-*/

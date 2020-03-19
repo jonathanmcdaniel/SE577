@@ -1,25 +1,22 @@
-/*
+package edu.drexel.TrainDemo.services;
 
-package edu.drexel.TrainDemo.services.users;
-
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import edu.drexel.TrainDemo.models.Group;
 import edu.drexel.TrainDemo.models.GroupType;
 
-
 public interface GroupService
 {
 
-	ArrayList<Group> listGroup(GroupType groupType);
+	public List<Group> getGroups();
 
-	ArrayList<Group> listGroupByIds(Set<Integer> groupId);
+//	List<Group> listGroup(GroupType groupType);
 
-	ArrayList<Group> listGroupByNames(ArrayList<String> names);
+//	List<Group> listGroupByNames(List<String> names);
 
 	Group findByName(String groupName);
 
-} // End of GroupServices.
+//	Group createGroup(Integer groupId, String groupName, GroupType groupType);
 
-*/
+} // End of GroupServices.
