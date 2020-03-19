@@ -39,6 +39,9 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/admin/dashboard}">Admin Panel <span class="sr-only">(current)</span></a>
+                </li>
                 <li class="ml-auto nav-item authenticated dropdown dropdown-menu-right">
                     <a class="nav-link dropdown-toggle" href="#" id="profile-name" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false"></a>
@@ -95,7 +98,7 @@
                             <input type="text" class="form-control" id="lname">
                         </div>
                         <div class="form-group">
-                            <label for="phNumber">Last Name: ex: (9145536614)</label>
+                            <label for="phNumber">Phone Number: ex: (9145536614)</label>
                             <input type="text" class="form-control" id="phNumber" pattern="[0-9]*">
                         </div>
                         <div class="form-group">
