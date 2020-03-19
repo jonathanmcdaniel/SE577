@@ -1,7 +1,7 @@
-package edu.drexel.TrainDemo.repositories;
+package edu.drexel.TrainDemo.repositories.users;
 
-import edu.drexel.TrainDemo.models.Group;
-import edu.drexel.TrainDemo.models.GroupType;
+import edu.drexel.TrainDemo.models.users.Group;
+import edu.drexel.TrainDemo.models.users.GroupType;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

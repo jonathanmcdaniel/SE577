@@ -1,14 +1,10 @@
-package edu.drexel.TrainDemo.models;
-
-import java.util.HashSet;
-import java.util.Set;
+package edu.drexel.TrainDemo.models.users;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import edu.drexel.TrainDemo.models.GroupType;
 
 @Entity
 public class Group
