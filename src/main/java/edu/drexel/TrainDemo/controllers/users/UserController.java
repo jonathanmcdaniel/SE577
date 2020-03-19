@@ -41,7 +41,10 @@ public class UserController {
 
     @RequestMapping("/user/dashboard")
     String userDashboard(@AuthenticationPrincipal OAuth2User principal, Model model) {
-        System.out.println((int) principal.getAttribute("id"));
+        UserEntity currentUser = this.userService.getUser(Utils.intToLong(principal.getAttribute("id")));
+        model.addAttribute("firstName", currentUser.getFirstName());
+        model.addAttribute("lastName", currentUser.getLastName());
+        model.addAttribute("phoneNumber", currentUser.getPhoneNumber());
         return "user/dashboard";
     }
 
@@ -65,6 +68,12 @@ public class UserController {
         System.out.println(principal.getAttribute("id") + " | " + firstName + " | " + lastName);
         this.userService.createUser(Utils.intToLong(principal.getAttribute("id")), firstName, lastName, phoneNumber);
         return new RedirectView("/");
+    }
+
+    @RequestMapping("/user/save")
+    @ResponseBody
+    void saveUser(@AuthenticationPrincipal OAuth2User principal, @RequestParam String firstName, @RequestParam String lastName, @RequestParam String phoneNumber) {
+        this.userService.saveUser(principal, new UserEntity(firstName, lastName, phoneNumber, Utils.intToLong(principal.getAttribute("id"))));
     }
 
     @RequestMapping(value = "/user/newAddress", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)

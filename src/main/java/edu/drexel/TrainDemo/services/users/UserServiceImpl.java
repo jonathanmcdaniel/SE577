@@ -70,7 +70,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void saveUser(UserEntity oldUser, UserEntity newUser) {
-        // TODO: Implement this
+        System.out.println(newUser.toString());
+        oldUser.setFirstName(newUser.getFirstName());
+        oldUser.setLastName(newUser.getLastName());
+        oldUser.setPhoneNumber(newUser.getPhoneNumber());
+        oldUser.setIsAdmin(newUser.getIsAdmin());
+        System.out.println(oldUser.toString());
+        this.userRepo.save(oldUser);
     }
 
     @Override

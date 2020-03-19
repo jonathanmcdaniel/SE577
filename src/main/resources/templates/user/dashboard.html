@@ -17,13 +17,60 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col col-8">
-                <ul class="list-group">
-                    <li class="list-group-item list-group-item-action"><a th:href="@{/user/addresses(addressType='Billing')}">Billing Info</a></li>
-                    <li class="list-group-item list-group-item-action"><a th:href="@{/user/addresses(addressType='Shipping')}">Shipping Info</a></li>
-                    <li class="list-group-item list-group-item-action"><a th:href="@{/user/payment}">Payment Methods</a></li>
-                    <li class="list-group-item list-group-item-action"><a th:href="@{/user/orders}">Your Orders</a></li>
-                </ul>
+            <div class="col">
+                <div class="container address-container">
+                    <a class="text">User Account Settings:</a><br>
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-action"><a th:href="@{/user/addresses(addressType='Billing')}">Billing Info</a></li>
+                        <li class="list-group-item list-group-item-action"><a th:href="@{/user/addresses(addressType='Shipping')}">Shipping Info</a></li>
+                        <li class="list-group-item list-group-item-action"><a th:href="@{/user/payment}">Payment Methods</a></li>
+                        <li class="list-group-item list-group-item-action"><a th:href="@{/user/orders}">Your Orders</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col">
+                <div class="container address-container">
+                    <p>
+                        <a class="text">User Account Info:</a><br><br>
+                        <pre><a class="text">Name: </a><a class="text" th:text="${firstName}"></a> <a class="text" th:text="${lastName}"></a></pre><br>
+                        <pre><a class="text">Phone Number: </a><a class="text" th:text="${phoneNumber}"></a></pre><br><br>
+                        <a><button class="btn btn-primary" onclick="showEditModal()">Edit Account Details</button></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="editAccountModal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newAccountModalLongTitle">New Account</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-body">
+                        <p>Please Update Your Account Info:</p>
+                        <form>
+                            <div class="form-group ">
+                                <label for="editfname">First Name:</label>
+                                <input type="text" class="form-control" id="editfname" th:text="${firstName}">
+                            </div>
+                            <div class="form-group">
+                                <label for="editlname">Last Name:</label>
+                                <input type="text" class="form-control" id="editlname" th:text="${lastName}">
+                            </div>
+                            <div class="form-group">
+                                <label for="editphNumber">Last Name: ex: (9145536614)</label>
+                                <input type="text" class="form-control" id="editphNumber" pattern="[0-9]*" th:text="${phoneNumber}">
+                            </div>
+                            <div class="form-group">
+                                <button onclick="saveUser()">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
