@@ -1,9 +1,18 @@
 function addUser() {
     $.get("/user/new", {
         firstName: $("#fname").val(),
-        lastName: $("#lname").val()
+        lastName: $("#lname").val(),
+        phoneNumber: $("#phNumber").val()
     }, function () {
         console.log("Add User Completed");
+    });
+}
+
+function saveUser() {
+    $.post("/user/save", {
+        firstName: $("#editfname").val(),
+        lastName: $("#editlname").val(),
+        phoneNumber: $("#editphNumber").val()
     });
 }
 
@@ -25,6 +34,10 @@ function wait(ms){
     while(end < start + ms) {
         end = new Date().getTime();
     }
+}
+
+function showEditModal() {
+    $('#editAccountModal').modal('show');
 }
 
 function deleteAddress(index) {
