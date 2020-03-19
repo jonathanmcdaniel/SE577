@@ -8,7 +8,9 @@ import org.slf4j.Logger;
 import edu.drexel.TrainDemo.models.users.Group;
 import edu.drexel.TrainDemo.models.users.GroupType;
 import edu.drexel.TrainDemo.repositories.users.GroupRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class GroupServiceImpl implements GroupService
 {
 

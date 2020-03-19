@@ -2,7 +2,5 @@ package edu.drexel.TrainDemo.models.users;
 
 public enum GroupType
 {
-
-	Employee, Customer
-
+	ADMIN, EMPLOYEE, CUSTOMER
 } // End of GroupType.

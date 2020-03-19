@@ -1,19 +1,23 @@
 package edu.drexel.TrainDemo.models.users;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
 @Entity
+@Table(name = "groups")
 public class Group
 {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Long groupId;
+
+    @Column(name = "group_name")
     private String groupName;
-    private Integer groupId;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "group_type", length = 8)
     private GroupType groupType;
 
     protected Group()
@@ -21,11 +25,10 @@ public class Group
 
     }
 
-    public Group(String groupName, GroupType groupType, Integer groupId)
+    public Group(String groupName, GroupType groupType)
     {
         this.groupName = groupName;
         this.groupType = groupType;
-        this.groupId = groupId;
     }
 
     public String getGroupName()
@@ -38,7 +41,7 @@ public class Group
         return groupType;
     }
 
-    public Integer getGroupId()
+    public Long getGroupId()
     {
         return groupId;
     }
