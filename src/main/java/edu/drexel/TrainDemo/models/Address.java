@@ -4,6 +4,7 @@ import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "address")
@@ -48,6 +49,17 @@ public class Address implements Serializable {
         this.city = city;
         this.state = state;
         this.zip = zip;
+        this.userId = userId;
+        this.isBilling = isBilling;
+    }
+
+    public Address(List<String> params, Long userId, Boolean isBilling) {
+        this.name = params.get(0);
+        this.line1 = params.get(1);
+        this.line2 = params.get(2);
+        this.city = params.get(3);
+        this.state = params.get(4);
+        this.zip = params.get(5);
         this.userId = userId;
         this.isBilling = isBilling;
     }

@@ -85,13 +85,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<Address> getMailingAddresses(OAuth2User principal) {
+    public List<Address> getShippingAddresses(OAuth2User principal) {
         return this.addressRepo.findAddressesByUserIdAndIsBilling(this.getIdFromOAuth(principal), false);
     }
 
     @Override
     public void saveAddress(OAuth2User principal, Address address) {
         this.addressRepo.save(address);
+    }
+
+    @Override
+    public void deleteAddress(List<String> params, long userid) {
+        this.addressRepo.deleteAddressByNameAndLine1AndCityAndZipAndUserId(params.get(0), params.get(1), params.get(2), params.get(3), userid);
     }
 
     /**

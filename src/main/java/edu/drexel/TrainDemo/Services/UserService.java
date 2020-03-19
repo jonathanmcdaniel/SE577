@@ -21,7 +21,8 @@ public interface UserService {
     // Address Functions
     List<Address> getBillingAddresses(OAuth2User principal);
     //List<Address> getBillingAddresses(long userid);
-    List<Address> getMailingAddresses(OAuth2User principal);
-    //List<Address> getMailingAddresses(long userid);
+    List<Address> getShippingAddresses(OAuth2User principal);
+    //List<Address> getShippingAddresses(long userid);
     void saveAddress(OAuth2User principal, Address address);
+    void deleteAddress(List<String> params, long userid);
 }

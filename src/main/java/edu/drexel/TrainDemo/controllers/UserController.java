@@ -1,9 +1,13 @@
 package edu.drexel.TrainDemo.controllers;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import edu.drexel.TrainDemo.Services.UserService;
 import edu.drexel.TrainDemo.Utils;
+import edu.drexel.TrainDemo.models.Address;
+import edu.drexel.TrainDemo.models.State;
 import edu.drexel.TrainDemo.models.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
@@ -11,7 +15,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.rmi.CORBA.Util;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -40,11 +47,19 @@ public class UserController {
         return "user/dashboard";
     }
 
-    @RequestMapping("/user/billing")
-    String userBilling(@AuthenticationPrincipal OAuth2User principal, Model model) {
-        Long userid = Utils.intToLong(principal.getAttribute("id"));
-
-        return "user/billing";
+    @RequestMapping("/user/addresses")
+    String userAddresses(@AuthenticationPrincipal OAuth2User principal, Model model, @RequestParam String addressType) {
+        List<Address> addresses;
+        if (addressType.equals("Billing")) {
+            addresses = this.userService.getBillingAddresses(principal);
+        } else {
+            addresses = this.userService.getShippingAddresses(principal);
+        }
+        model.addAttribute("addresses", addresses);
+        model.addAttribute("label", addressType);
+        model.addAttribute("states", State.values());
+        System.out.println(State.values());
+        return "user/addresses";
     }
 
     @RequestMapping("/user/new")
@@ -52,5 +67,21 @@ public class UserController {
         System.out.println(principal.getAttribute("id") + " | " + firstName + " | " + lastName);
         this.userService.createUser(Utils.intToLong(principal.getAttribute("id")), firstName, lastName);
         return new RedirectView("/");
+    }
+
+    @RequestMapping(value = "/user/newAddress", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    void newAddress(@AuthenticationPrincipal OAuth2User principal, @RequestParam(value = "params[]") String[] params, @RequestParam(value = "isBilling") Boolean isBilling) {
+        Address address = new Address(Arrays.asList(params), Utils.intToLong(principal.getAttribute("id")), isBilling);
+        this.userService.saveAddress(principal, address);
+        System.out.println("GOT HERE");
+        //return new RedirectView("/user/dashboard");
+    }
+
+    @RequestMapping("user/deleteAddress")
+    @ResponseBody
+    void deleteAddress(@AuthenticationPrincipal OAuth2User principal, @RequestParam(value = "params[]") String[] params) {
+        this.userService.deleteAddress(Arrays.asList(params), Utils.intToLong(principal.getAttribute("id")));
+        //return new RedirectView("/user/dashbard");
     }
 }

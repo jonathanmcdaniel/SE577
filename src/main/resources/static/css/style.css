@@ -15,10 +15,20 @@ div.address-container {
 
 div.list-row {
     padding: 10px;
-
 }
 
 div.address {
     margin-left: 20px;
     margin-right: 20px;
+}
+
+.address-header {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+ul.account-header {
+    list-style: none;
+    font-weight: bold;
+    font-size: large;
 }
