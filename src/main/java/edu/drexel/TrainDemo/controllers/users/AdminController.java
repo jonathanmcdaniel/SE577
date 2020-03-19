@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.Map;
+import java.util.List;
 
 @Controller
 public class AdminController {
@@ -22,6 +22,18 @@ public class AdminController {
         UserEntity currentUser = this.userService.getUser(principal);
         if (currentUser != null && currentUser.getIsAdmin()) {
             return "admin/dashboard";
+        } else {
+            return "admin/access_denied";
+        }
+    }
+
+    @GetMapping("admin/users")
+    String manageUsers(@AuthenticationPrincipal OAuth2User principal, Model model) {
+        UserEntity currentUser = this.userService.getUser(principal);
+        if (currentUser != null && currentUser.getIsAdmin()) {
+            List<UserEntity> users = this.userService.getUsers();
+            model.addAttribute("users", users);
+            return "admin/users";
         } else {
             return "admin/access_denied";
         }
