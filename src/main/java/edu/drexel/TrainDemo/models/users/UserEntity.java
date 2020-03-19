@@ -19,6 +19,8 @@ public class UserEntity implements Serializable {
     @Column(name = "last_name")
     private String lastName;
 
+    // TODO: Add email and phone number? Would need to update database tables
+
     @Column(name = "is_admin")
     private Boolean isAdmin;
 

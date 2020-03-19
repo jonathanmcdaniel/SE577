@@ -9,31 +9,37 @@
     <div class="jumbotron">
         <div class="container">
             <div class="row">
-                <ul>
-                    <li>My Account:</li>
+                <ul class="account-header">
+                    <li><a th:href="@{/user/dashboard}">My Account</a></li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="container">
         <div class="row">
-            <div class="col col-8">
+            <div class="col">
                 <div class="row list-row">
                     <div class="container address-container">
-                        <a>Saved Billing Info:</a>
-                        <div class="container address">
-                            <div class="row">
-                                <a>Billing Info 1:</a><button>&times;</button>
+                        <pre><a class="address-header">Saved <a th:text="${label}" id="address-type"></a> Info:</a></pre>
+                        <div th:each="address,iter : ${addresses}" class="container address">
+                            <div class="row address-header">
+                                <pre><a th:text="${label}"></a><a> Info #</a><a th:text="${iter.index + 1}"></a>:</pre>
                             </div>
-                            <div class="row">
-                                <p>1234 made up lane<br>Philadelphia, PA 19104</p>
+                            <div th:id="${iter.index + 1}" class="row">
+                                <p>
+                                    <a th:id="addrName" th:text="${address.name}"></a><br>
+                                    <a th:id="addrLine1" th:text="${address.line1}"></a><br>
+                                    <a th:id="addrLine2" th:if="${address.line2 != ''}" th:text="${address.line2}"></a><br th:if="${address.line2 != ''}">
+                                    <a th:id="addrCity" th:text="${address.city}"></a>, <a th:id="addrState" th:text="${address.state}"></a> <a th:id="addrZip" th:text="${address.zip}"></a><br>
+                                    <a th:href="@{/user/dashboard}"><button type="button" class="btn btn-primary" th:attr="onclick=|deleteAddress('${iter.index + 1}')|">Delete Address</button></a><br>
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row list-row">
                     <div class="container address-container">
-                        <form>
+                        <form id="address-form">
                             <a>Enter New Billing Info:</a>
                             <div class="form-group">
                                 <label for="name">Name:</label>
@@ -59,11 +65,13 @@
                                 <label for="state">Sate:</label>
                                 <select type="name" class="form-control" id="state">
                                     <option value="">-- State --</option>
-                                    <option value="AL">Alaska</option>
+                                    <option th:each="state : ${states}" th:value="${state}" th:text="${state}"></option>
+
                                 </select>
                             </div>
                             <div class="form-group">
-                                <button>Save</button>
+                                <a th:href="@{/user/dashboard}" th:if="${label == 'Billing'}"><button type="button" class="btn btn-primary" onclick="addAddress(true)">Save</button></a>
+                                <a th:href="@{/user/dashboard}" th:if="${label != 'Billing'}"><button type="button" class="btn btn-primary" onclick="addAddress(false)">Save</button></a>
                             </div>
                         </form>
                     </div>
