@@ -1,40 +1,37 @@
-/*package edu.drexel.TrainDemo.controllers;
+package edu.drexel.TrainDemo.controllers.users;
 
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
+import edu.drexel.TrainDemo.models.users.GroupType;
+import edu.drexel.TrainDemo.services.users.GroupService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
-import edu.drexel.TrainDemo.models.Group;
-import edu.drexel.TrainDemo.models.GroupType;
-import edu.drexel.TrainDemo.repositories.GroupRepository;
-import edu.drexel.TrainDemo.Services.GroupService;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
 public class GroupController
 {
 
+    @Autowired
     private GroupService groupService;
 
-    public GroupController(GroupRepository groupRepository)
-    {
-        this.groupService = groupService;
-    }
 
-
-    @RequestMapping("/group")
+    /*@RequestMapping("/group")
     String search(Model model){
         List<Group> groups = groupRepository.findAll();
         model.addAttribute("groups", groups);
 
         System.out.println("groups");
         return "groups";
+    }*/
+
+    @RequestMapping("group/new")
+    @ResponseBody
+    void newGroup(@RequestParam String groupName, @RequestParam String groupType) {
+        System.out.println("newGroup: " + groupName + " | " + groupType);
+        this.groupService.createGroup(groupName, GroupType.valueOf(groupType));
     }
 
+
 } // End of GroupController
-*/

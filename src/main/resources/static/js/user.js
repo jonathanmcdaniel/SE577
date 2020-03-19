@@ -17,8 +17,6 @@ function saveUser() {
 }
 
 function addAddress(isBilling) {
-    console.log(isBilling);
-    wait(5000);
     var info = [$("#name").val(), $("#addr1").val(), $("#addr2").val(), $("#city").val(), $("#state").children("option:selected").val(), $("#zip").val()]
     $.post("/user/newAddress", {
         params: info,
@@ -48,7 +46,5 @@ function deleteAddress(index) {
     var info = [name, addr1, city, zip];
     $.post("/user/deleteAddress", {
         params: info,
-    }, function () {
-        //pass
     });
 }

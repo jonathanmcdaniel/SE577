@@ -17,6 +17,6 @@ public interface GroupService
 
 	Group findByName(String groupName);
 
-//	Group createGroup(Integer groupId, String groupName, GroupType groupType);
+	void createGroup(String groupName, GroupType groupType);
 
 } // End of GroupServices.

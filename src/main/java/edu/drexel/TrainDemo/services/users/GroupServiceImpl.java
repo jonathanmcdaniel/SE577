@@ -48,14 +48,13 @@ public class GroupServiceImpl implements GroupService
       return groupRepository.findByGroupName(groupName);
     }
 
-/*    @Override
-    public Group createGroup(String groupId, String groupName, GroupType groupType) {
-        Group newGroup = new Group(groupName, groupId, groupType);
+    @Override
+    public void createGroup(String groupName, GroupType groupType) {
+        Group newGroup = new Group(groupName, groupType);
         System.out.println("createGroup: " + newGroup.getGroupId() + " | " + newGroup.getGroupName() + " | " + newGroup.getGroupType());
         this.groupRepository.save(newGroup);
-        return newGroup;
     }
-*/
+
 
 
 } // End of GroupServicesImpl.
