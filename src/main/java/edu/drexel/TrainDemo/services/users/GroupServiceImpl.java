@@ -43,6 +43,11 @@ public class GroupServiceImpl implements GroupService
 //        return groupRepository.findByNames(name);
 //    }
 
+    public String findNameById(Long groupid) {
+        Group group = this.groupRepository.findGroupByGroupId(groupid);
+        return group.getGroupName();
+    }
+
     public Group findByName(String groupName)
     {
       return groupRepository.findByGroupName(groupName);

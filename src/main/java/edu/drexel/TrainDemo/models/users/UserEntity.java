@@ -24,8 +24,8 @@ public class UserEntity implements Serializable {
 
     // TODO: Add email only if needed? Would need to update database tables
 
-    @Column(name = "is_admin")
-    private Boolean isAdmin;
+    @Column(name = "group_id")
+    private Long groupId;
 
     @Column(name = "external_id")
     private Long externalId;
@@ -37,7 +37,15 @@ public class UserEntity implements Serializable {
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.externalId = clientid;
-        this.isAdmin = false;
+        this.groupId = null;
+    }
+
+    public UserEntity(String firstName, String lastName, String phoneNumber, long clientid, Long groupId) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.externalId = clientid;
+        this.groupId = groupId;
     }
 
     public Long getId() {
@@ -54,8 +62,8 @@ public class UserEntity implements Serializable {
 
     public String getPhoneNumber() { return this.phoneNumber; }
 
-    public boolean getIsAdmin() {
-        return this.isAdmin;
+    public Long getGroupId() {
+        return this.groupId;
     }
 
     public Long getExternalId() {
@@ -74,16 +82,8 @@ public class UserEntity implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public void setAdmin(Boolean admin) {
-        isAdmin = admin;
-    }
-
-    /**
-     * This function is most likely only used during development and eval for looking at admin panels.
-     * @param shouldBeAdmin
-     */
-    public void setIsAdmin(Boolean shouldBeAdmin) {
-        this.isAdmin = shouldBeAdmin;
+    public void setGroupId(Long groupId) {
+        this.groupId = groupId;
     }
 
     public String toString() {

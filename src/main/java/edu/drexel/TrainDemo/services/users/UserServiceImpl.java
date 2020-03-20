@@ -2,10 +2,14 @@ package edu.drexel.TrainDemo.services.users;
 
 import edu.drexel.TrainDemo.Utils;
 import edu.drexel.TrainDemo.models.users.Address;
+import edu.drexel.TrainDemo.models.users.Group;
+import edu.drexel.TrainDemo.models.users.GroupType;
 import edu.drexel.TrainDemo.models.users.UserEntity;
 import edu.drexel.TrainDemo.repositories.users.AddressRepository;
+import edu.drexel.TrainDemo.repositories.users.GroupRepository;
 import edu.drexel.TrainDemo.repositories.users.UserRepository;
 
+import org.apache.catalina.User;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.core.user.OAuth2User;
@@ -25,6 +29,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private AddressRepository addressRepo;
+
+    @Autowired
+    private GroupRepository groupRepo;
 
     @Override
     public List<UserEntity> getUsers() {
@@ -55,7 +62,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserEntity createUser(long id, String firstName, String lastName, String phoneNumber) {
-        UserEntity newUser = new UserEntity(firstName, lastName, phoneNumber, id);
+        Long groupid = this.groupRepo.findByGroupName("DEFAULT").getGroupId();
+        UserEntity newUser = new UserEntity(firstName, lastName, phoneNumber, id, groupid);
         System.out.println("createUser: " + newUser.getExternalId() + " | " + newUser.getFirstName() + " | " + newUser.getLastName());
         this.userRepo.save(newUser);
         getUser(id);
@@ -74,9 +82,25 @@ public class UserServiceImpl implements UserService {
         oldUser.setFirstName(newUser.getFirstName());
         oldUser.setLastName(newUser.getLastName());
         oldUser.setPhoneNumber(newUser.getPhoneNumber());
-        oldUser.setIsAdmin(newUser.getIsAdmin());
+        if (newUser.getGroupId() != null) {
+            oldUser.setGroupId(newUser.getGroupId());
+        }
         System.out.println(oldUser.toString());
         this.userRepo.save(oldUser);
+    }
+
+    @Override
+    public boolean isAllowedAdminPanel(UserEntity user) {
+        Group group = this.groupRepo.findGroupByGroupId(user.getGroupId());
+        System.out.println(group.getGroupType());
+        return (group.getGroupType() == GroupType.ADMIN || group.getGroupType() == GroupType.EMPLOYEE);
+    }
+
+    @Override
+    public void changeGroupId(Long userid, Long groupId) {
+        UserEntity user = this.getUser(userid);
+        user.setGroupId(groupId);
+        this.userRepo.save(user);
     }
 
     @Override

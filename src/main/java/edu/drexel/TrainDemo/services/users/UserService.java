@@ -18,6 +18,9 @@ public interface UserService {
     void saveUser(UserEntity user, UserEntity newUser);
     void removeUser(OAuth2User principal);
 
+    boolean isAllowedAdminPanel(UserEntity userEntity);
+    void changeGroupId(Long userid, Long groupId);
+
     // Address Functions
     List<Address> getBillingAddresses(OAuth2User principal);
     //List<Address> getBillingAddresses(long userid);

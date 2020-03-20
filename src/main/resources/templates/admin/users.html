@@ -34,24 +34,67 @@
                             <th class="th-sm">First Name</th>
                             <th class="th-sm">Last Name</th>
                             <th class="th-sm">Phone #</th>
-                            <th class="th-sm">Admin</th>
+                            <th class="th-sm">Group</th>
                             <th class="th-sm">Details</th>
                             <th class="th-sm">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="user : ${users}">
-                            <td th:text="${user.getId()}"></td>
-                            <td th:text="${user.getExternalId()}"></td>
-                            <td th:text="${user.getFirstName()}"></td>
-                            <td th:text="${user.getLastName()}"></td>
-                            <td th:text="${user.getPhoneNumber()}"></td>
-                            <td th:text="${user.getIsAdmin()}"></td>
-                            <td><button class="btn btn-primary" th:type="button">Details</button></td>
+                        <tr th:each="user,iter : ${users}" th:id="${iter.index + 1}">
+                            <td id="userId" th:text="${user.getId()}"></td>
+                            <td id="userExternalId" th:text="${user.getExternalId()}"></td>
+                            <td id="userFirstName" th:text="${user.getFirstName()}"></td>
+                            <td id="userLastName" th:text="${user.getLastName()}"></td>
+                            <td id="userPhNumber" th:text="${user.getPhoneNumber()}"></td>
+                            <td id="userGroup" th:data="${user.getGroupId()}" th:text="${user.getGroupId()}"></td>
+                            <td><button class="btn btn-primary" th:type="button" th:onclick="'adminEditUser(' + ${iter.index + 1} + ')'">Details</button></td>
                             <td><button class="btn btn-primary" th:type="button">&times;</button></td>
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="editUserModal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editUserModalLongTitle">Edit User Account</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-body">
+                        <p>Please Update This User's Info:</p>
+                        <a id="externalId"></a>
+                        <form>
+                            <div class="form-group ">
+                                <label for="fname">First Name:</label>
+                                <input type="text" class="form-control" id="fname">
+                            </div>
+                            <div class="form-group">
+                                <label for="lname">Last Name:</label>
+                                <input type="text" class="form-control" id="lname">
+                            </div>
+                            <div class="form-group">
+                                <label for="phNumber">Phone Number: ex: (9145536614)</label>
+                                <input type="text" class="form-control" id="phNumber" pattern="[0-9]*">
+                            </div>
+                            <div class="form-group">
+                                <label for="group">Group:</label>
+                                <select type="name" class="form-control" id="group">
+                                    <option value="">-- Group --</option>
+                                    <option th:each="group : ${groups}" th:value="${group.getGroupId()}" th:text="${group.getGroupName() + ' (' + group.getGroupType() + ')'}"></option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <a th:href="@{''}"><button type="button" class="btn btn-primary" onclick="adminSaveUser()">Save</button></a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

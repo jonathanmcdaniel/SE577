@@ -1,6 +1,7 @@
 package edu.drexel.TrainDemo.controllers.users;
 
 import edu.drexel.TrainDemo.models.users.Address;
+import edu.drexel.TrainDemo.services.users.GroupService;
 import edu.drexel.TrainDemo.services.users.UserService;
 import edu.drexel.TrainDemo.Utils;
 import edu.drexel.TrainDemo.models.users.UserEntity;
@@ -25,6 +26,9 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    GroupService groupService;
+
     @GetMapping("/user")
     @ResponseBody
     public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
@@ -42,9 +46,11 @@ public class UserController {
     @RequestMapping("/user/dashboard")
     String userDashboard(@AuthenticationPrincipal OAuth2User principal, Model model) {
         UserEntity currentUser = this.userService.getUser(Utils.intToLong(principal.getAttribute("id")));
+        String groupName = this.groupService.findNameById(currentUser.getGroupId());
         model.addAttribute("firstName", currentUser.getFirstName());
         model.addAttribute("lastName", currentUser.getLastName());
         model.addAttribute("phoneNumber", currentUser.getPhoneNumber());
+        model.addAttribute("groupName", groupName);
         return "user/dashboard";
     }
 

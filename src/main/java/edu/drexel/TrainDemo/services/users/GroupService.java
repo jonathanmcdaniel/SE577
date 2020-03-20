@@ -15,6 +15,8 @@ public interface GroupService
 
 //	List<Group> listGroupByNames(List<String> names);
 
+	String findNameById(Long groupid);
+
 	Group findByName(String groupName);
 
 	void createGroup(String groupName, GroupType groupType);

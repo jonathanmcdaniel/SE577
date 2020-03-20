@@ -8,6 +8,27 @@ function showModal(modalid) {
     $('#' + modalid).modal("show");
 }
 
+function adminEditUser(userid) {
+    var data = $("#"+userid).find("#userGroup").html();
+    console.log(data);
+    $("#editUserModal").find('#externalId').val($("#"+userid).find("#userExternalId").html());
+    $("#editUserModal").find('#fname').val($("#"+userid).find("#userFirstName").html());
+    $("#editUserModal").find('#lname').val($("#"+userid).find("#userLastName").html());
+    $("#editUserModal").find('#phNumber').val($("#"+userid).find("#userPhNumber").html());
+    $("#editUserModal").find('#group').children("option[value=" + data + "]").attr('selected', 'selected');
+    $("#editUserModal").modal("show");
+}
+
+function adminSaveUser() {
+    $.post("/admin/saveUser", {
+        userExternalId: $("#editUserModal").find('#externalId').val(),
+        firstName: $("#editUserModal").find('#fname').val(),
+        lastName: $("#editUserModal").find('#lname').val(),
+        phoneNumber: $("#editUserModal").find('#phNumber').val(),
+        groupId: $("#editUserModal").find('#group').children("option:selected").val()
+    });
+}
+
 function addGroup() {
     var groupName = $('#newGroupModal').find('#gname').val();
     var groupType = $('#newGroupModal').find('#gtype').children("option:selected").val();
