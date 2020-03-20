@@ -8,5 +8,5 @@ import edu.drexel.TrainDemo.models.search.Path;
 
 @Service
 public interface PathService {
-    List<Path> getPaths(String from, String to);
+    List<Path> getPaths(String from, String to, String desiredDepartureDate);
 }

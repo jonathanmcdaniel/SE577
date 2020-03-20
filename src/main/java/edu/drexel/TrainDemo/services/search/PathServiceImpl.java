@@ -33,7 +33,7 @@ public class PathServiceImpl implements PathService {
     private Logger logger;
     
     @Override
-    public List<Path> getPaths(String from, String to){
+    public List<Path> getPaths(String from, String to, String desiredDepartureDate){
 
         // Grab all StopTimes at the "from" Stop
         List<StopTime> allFrom = stopTimeRepo.findByStopId(from);
@@ -66,8 +66,15 @@ public class PathServiceImpl implements PathService {
 
                                 // Create the path and add it to the list of paths
                                 Path path = new Path(departureDate, fromStop, toStop, departureTime, arrivalTime);
-                                paths.add(path);
-
+                                if (desiredDepartureDate.isEmpty()) {
+                                	paths.add(path); //add path if departure date not specified
+                                } else {
+                                	// only add path if it is for desired date
+                                    if (departureDate.equals(Date.valueOf(desiredDepartureDate))) {
+                                        paths.add(path);
+                                    }
+                                }
+                                
                             }
                         }
                     }

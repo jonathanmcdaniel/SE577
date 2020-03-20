@@ -25,10 +25,15 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <span class="form-label">Departure Date: </span>
+                        <input class="form-control" type="date" th:field="*{departureDate}" th:value="${departureDate}">
+                    </div>
+                    <div class="form-group">
                         <div class="form-btn">
                             <button class="btn btn-primary submit-btn">Search!</button>
                         </div>                    
                     </div>
+                    <em>Try seaching PHL to BAL on August 4, 2018 or 2018-08-04</em>
                 </form>
             </div>
         </div>
