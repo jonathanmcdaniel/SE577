@@ -8,36 +8,29 @@
     <main role="main">
         <div class="jumbotron">
             <div class="container">
-                <h1 class="display-3">Hello, world!</h1>
-                <p>This is a template for a simple marketing or informational website. It includes a large callout called a
-                    jumbotron and three supporting pieces of content. Use it as a starting point to create something more
-                    unique.</p>
-                <a role="button" class="btn btn-primary btn-lg" href="#">Learn More</a>
+                <form id="SearchForm" method="post" th:action="@{/search}" th:object="${query}">
+                    <div class="form-group">
+                        <h2>Search for Available Routes!</h2>
+                    </div>
+                    <div class="form-group">
+                        <span class="form-label">From: </span>
+                        <select class="form-control" th:field="*{from}">
+                            <option th:each="stop: ${stops}" th:text="${stop.id} + ' - ' + ${stop.name}" th:value="${stop.id}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <span class="form-label">To: </span>
+                        <select class="form-control" th:field="*{to}">
+                            <option th:each="stop: ${stops}" th:text="${stop.id} + ' - ' + ${stop.name}" th:value="${stop.id}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-btn">
+                            <button class="btn btn-primary submit-btn">Search!</button>
+                        </div>                    
+                    </div>
+                </form>
             </div>
-        </div>
-        <div class="container">
-            <form id="SearchForm" method="post" th:action="@{/search}" th:object="${query}">
-                <div class="form-group">
-                    <h2>Search for Available Routes!</h2>
-                </div>
-                <div class="form-group">
-                    <span class="form-label">From: </span>
-                    <select class="form-control" th:field="*{from}">
-                        <option th:each="stop: ${stops}" th:text="${stop.id} + ' - ' + ${stop.name}" th:value="${stop.id}"></option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <span class="form-label">To: </span>
-                    <select class="form-control" th:field="*{to}">
-                        <option th:each="stop: ${stops}" th:text="${stop.id} + ' - ' + ${stop.name}" th:value="${stop.id}"></option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <div class="form-btn">
-                        <button class="submit-btn">Search!</button>
-                    </div>                    
-                </div>
-            </form>
         </div>
         <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="signInModal">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -51,10 +44,10 @@
                     <div class="modal-body">
                         <p>Get the most of our site by signing in with one of these supported services.</p>
                         <a class="btn btn-block btn-social btn-github" href="/oauth2/authorization/github" role="button">
-                            <span class="fa fa-github"></span> Sign in with Github
+                            <i class="fab fa-github"></i> Sign in with Github
                         </a>
                         <a class="btn btn-block btn-social btn-google" href="/oauth2/authorization/google" role="button">
-                            <span class="fa fa-google"></span> Sign in with Google
+                            <i class="fab fa-google"></i> Sign in with Google
                         </a>
                     </div>
                 </div>

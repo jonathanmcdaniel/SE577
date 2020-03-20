@@ -16,6 +16,7 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.js"></script>
+        <script src="https://kit.fontawesome.com/788a7f77f8.js" crossorigin="anonymous"></script>
         <script type="text/javascript" src="/js/script.js"></script>
         <script type="text/javascript" src="/js/user.js"></script>
     </th:block>
@@ -23,7 +24,7 @@
 <body>
 <th:block  th:fragment="navbar">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">Train Ticket</a>
+        <a class="navbar-brand" href="/">Train Ticket</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
                 aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -39,16 +40,16 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
+                <li class="nav-item active authenticated">
                     <a class="nav-link" th:href="@{/admin/dashboard}">Admin Panel <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="ml-auto nav-item authenticated dropdown dropdown-menu-right">
                     <a class="nav-link dropdown-toggle" href="#" id="profile-name" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false"></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profile-name">
-                        <a class="dropdown-item" th:href="@{/user/dashboard}">My Account</a>
-                        <a class="dropdown-item" th:href="@{/cart}">My Cart</a>
-                        <a class="dropdown-item" href="/" onclick="logout()">Sign Out</a>
+                        <a class="dropdown-item" th:href="@{/user/dashboard}"><i class="fas fa-user"></i> My Account</a>
+                        <a class="dropdown-item" th:href="@{/cart}"><i class="fas fa-shopping-cart"></i> My Cart</a>
+                        <a class="dropdown-item" href="/" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
                     </div>
                 </li>
                 <li class="ml-auto nav-item unauthenticated">
@@ -69,10 +70,10 @@
                 <div class="modal-body">
                     <p>Get the most of our site by signing in with one of these supported services.</p>
                     <a class="btn btn-block btn-social btn-github" href="/oauth2/authorization/github" role="button">
-                        <span class="fa fa-github"></span> Sign in with Github
+                        <i class="fab fa-github"></i> Sign in with Github
                     </a>
                     <a class="btn btn-block btn-social btn-google" href="/oauth2/authorization/google" role="button">
-                        <span class="fa fa-google"></span> Sign in with Google
+                        <i class="fab fa-google"></i> Sign in with Google
                     </a>
                 </div>
             </div>
