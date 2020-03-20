@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="base::header"/>
+</head>
+<body>
+<th:block th:replace="base::navbar"/>
+<main role="main">
+    <div class="jumbotron">
+        <div class="container">
+            <h1>My Orders</h1>
+        </div>
+    </div>
+
+
+    <!-- 
+    TODO: 
+    Implement Orders as Bootstrap Cards (?)
+    Display (loop through) each Ticket in the order 
+    
+    Note: Probably will need JavaScript to handle, plus DB queries through Repository methods...
+    -->
+
+
+    <!-- <div class="container">
+        <div class="container">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Order Number</th>
+                        <th scope="col">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <th:block th:each="order : ${orders}">
+                        <tr>
+                            <td th:text="${order.id}"></td>
+                            <td th:text="${order.price}"></td>
+                        </tr>
+                    </th:block>
+                </tbody>
+            </table>
+            <span th:if="${items.isEmpty()}">Your cart is empty.</span>
+        </div>
+    </div> -->
+</main>
+</body>
+</html>

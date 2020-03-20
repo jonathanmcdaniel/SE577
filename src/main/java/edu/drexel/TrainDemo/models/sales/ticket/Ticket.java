@@ -3,10 +3,26 @@ package edu.drexel.TrainDemo.models.sales.ticket;
 import java.sql.Date;
 import java.sql.Time;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+
+// @Entity
 public class Ticket {
 
+    // @Id
+    // @GeneratedValue(strategy=GenerationType.AUTO)
+    // private long id;
+
+    // @ManyToOne
+    // private Order order;
+
     private Date departureDate;
+
+    // @Column(name="fromStop")
     private String from;
+
+    // @Column(name="toStop")
     private String to;
     private Time departureTime;
     private Time arrivalTime;
@@ -75,6 +91,8 @@ public class Ticket {
 	@Override
     public String toString() {
         return "Ticket{" +
+        // "id=" + id +
+        // ", order=" + order.getId() +
             "departureDate=" + departureDate +
             ", from=" + from +
             ", to=" + to +
