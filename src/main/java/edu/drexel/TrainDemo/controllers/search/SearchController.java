@@ -34,12 +34,13 @@ public class SearchController{
     String search(@ModelAttribute SearchQuery query, Model model){
 
         logger.info("Searching for paths...");
-        List<Path> paths = pathService.getPaths(query.getFrom(), query.getTo());
+        List<Path> paths = pathService.getPaths(query.getFrom(), query.getTo(), query.getDepartureDate());
         Iterable<Stop> stops = stopRepo.findAll();
 
         model.addAttribute("stops", stops);
         model.addAttribute("query", query);
         model.addAttribute("paths", paths);
+        model.addAttribute("departureDate", query.getDepartureDate());
 
         
         return "search";
