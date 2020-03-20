@@ -59,7 +59,20 @@ public class CartController {
         return "redirect:/cart";
     }
 
+    @PostMapping("/cart/remove")
+    public String removeFromCart(HttpSession session, @ModelAttribute Ticket ticket){
 
+        System.out.println(ticket.toString());
 
+        Cart cart = getCart(session);
+        logger.info("Found cart");
+        logger.info(cart.toString());
 
+        cart.findAndRemoveTicket(ticket);
+
+        logger.info(cart.toString());
+        session.setAttribute("Cart", cart);
+
+        return "redirect:/cart";
+    }
 }

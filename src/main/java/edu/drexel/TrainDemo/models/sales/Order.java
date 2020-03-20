@@ -3,34 +3,36 @@ package edu.drexel.TrainDemo.models.sales;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import edu.drexel.TrainDemo.models.sales.ticket.Ticket;
 import edu.drexel.TrainDemo.models.users.UserEntity;
 
-// @Entity
+@Entity
+@Table(name = "orders")
 public class Order {
 
-    // @Id
-    // @GeneratedValue(strategy=GenerationType.AUTO)
-    // private Long id;
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "price")
     private double price;
-    private UserEntity user;
+
+    @Column(name = "user_id")
+    private Long userId;
 
     protected Order() {
     }
 
     public Order(double price, UserEntity user){
         this.price = price;
-        this.user = user;
+        this.userId = user.getId();
     }
 
-    // public Long getId() {
-    //     return id;
-    // }
+    public Long getId() {
+         return id;
+    }
 
     // public void setId(Long id) {
     //     this.id = id;
@@ -44,20 +46,20 @@ public class Order {
         this.price = price;
     }
 
-    public UserEntity getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser(UserEntity user) {
-        this.user = user;
+    public void setUserId(UserEntity user) {
+        this.userId = user.getId();
     }
 
     @Override
     public String toString(){
         return "Order{" +
-            // ", id=" + id +
+            ", id=" + id +
             ", price=" + price +
-            ", user=" + user +
+            ", userId=" + userId +
             "}";
     }
     

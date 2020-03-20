@@ -88,6 +88,12 @@ public class Ticket {
 		this.price = price;
 	}
 
+	public boolean isEqual(Ticket ticket) {
+        boolean sameTicket = (this.departureDate.equals(ticket.departureDate)) && (this.departureTime.equals(ticket.departureTime)) &&
+                (this.arrivalTime.equals(ticket.arrivalTime)) && (this.from.equals(ticket.from)) && (this.to.equals(ticket.to));
+        return sameTicket;
+    }
+
 	@Override
     public String toString() {
         return "Ticket{" +

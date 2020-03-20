@@ -31,6 +31,15 @@ public class Cart {
 		items.remove(ticket);
 	}
 
+	public void findAndRemoveTicket(Ticket ticket) {
+		for (Ticket item : this.items) {
+			if (item.isEqual(ticket)) {
+				this.items.remove(item);
+				break;
+			}
+		}
+	}
+
 	@Override
 	public String toString(){
 		return "Cart{" +

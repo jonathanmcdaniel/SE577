@@ -22,6 +22,7 @@
                         <th scope="col">Departure Time</th>
                         <th scope="col">Arrival Time</th>
                         <th scope="col">Price</th>
+                        <th scope="col">Remove</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,6 +34,17 @@
                             <td th:text="${item.departureTime}"></td>
                             <td th:text="${item.arrivalTime}"></td>
                             <td th:text="${item.price}"></td>
+                            <td>
+                                <form method="post" th:action="@{/cart/remove}" th:object="${item}">
+                                    <input hidden th:name="departureDate" th:value="${item.departureDate}"/>
+                                    <input hidden th:name="from" th:value="${item.from}"/>
+                                    <input hidden th:name="to" th:value="${item.to}"/>
+                                    <input hidden th:name="departureTime" th:value="${item.departureTime}"/>
+                                    <input hidden th:name="arrivalTime" th:value="${item.arrivalTime}"/>
+                                    <input hidden th:name="price" th:value="${item.price}" />
+                                    <button class="btn btn-sm btn-primary" type="submit">Remove</button>
+                                </form>
+                            </td>
                         </tr>
                     </th:block>
                 </tbody>
