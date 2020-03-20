@@ -11,5 +11,4 @@ public interface OrderService {
     Order getOrder(Long orderid);
     List<Order> getUserOrders(UserEntity userEntity);
     List<Order> getAllOrders();
-
 }

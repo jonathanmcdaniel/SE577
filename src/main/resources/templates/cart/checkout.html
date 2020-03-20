@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <th:block th:replace="base::header"/>
+    <script type="text/javascript" src="/js/cart.js"></script>
 </head>
 <body>
 <th:block th:replace="base::navbar"/>
@@ -42,9 +43,10 @@
                         <br>
                         <div th:each="address,iter : ${billingAddresses}" class="container address">
                             <div class="row address-header">
-                                <pre>Billing Info #</a><a th:text="${iter.index + 1}"></a>:</pre>
+                                <pre><a>Billing Info #</a><a th:text="${iter.index + 1}"></a>:</pre>
                             </div>
-                            <div th:id="'billing'+${iter.index + 1}" class="row" th:object="${address.getId()}">
+                            <div class="row">
+                                <a hidden th:id="'billing'+${iter.index + 1}" th:text="${address.getId()}"></a>
                                 <p>
                                     <a th:id="addrName" th:text="${address.getName()}"></a><br>
                                     <a th:id="addrLine1" th:text="${address.getLine1()}"></a><br>
@@ -68,9 +70,10 @@
                         <br>
                         <div th:each="address,iter : ${shippingAddresses}" class="container address">
                             <div class="row address-header">
-                                <pre>Shipping Info #</a><a th:text="${iter.index + 1}"></a>:</pre>
+                                <pre><a>Shipping Info #</a><a th:text="${iter.index + 1}"></a>:</pre>
                             </div>
-                            <div th:id="'shipping'+${iter.index + 1}" class="row" th:object="${address.getId()}">
+                            <div class="row">
+                                <a hidden th:id="'shipping'+${iter.index + 1}" th:text="${address.getId()}"></a>
                                 <p class="ticket-para">
                                     <a th:id="addrName" th:text="${address.getName()}"></a><br>
                                     <a th:id="addrLine1" th:text="${address.getLine1()}"></a><br>
@@ -81,6 +84,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="row spacer">
+                <a class="checkout-button"><button class="btn btn-primary checkout-button" th:type="button" th:onclick="completeOrder()">Complete Order</button></a>
             </div>
         </div>
     </div>

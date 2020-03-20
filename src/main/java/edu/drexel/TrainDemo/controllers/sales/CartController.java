@@ -4,7 +4,10 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import edu.drexel.TrainDemo.Utils;
+import edu.drexel.TrainDemo.models.sales.Order;
 import edu.drexel.TrainDemo.models.users.Address;
+import edu.drexel.TrainDemo.services.sales.OrderService;
 import edu.drexel.TrainDemo.services.users.UserService;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +15,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import edu.drexel.TrainDemo.models.sales.Cart;
 import edu.drexel.TrainDemo.models.sales.ticket.Ticket;
@@ -26,6 +27,9 @@ public class CartController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    OrderService orderService;
 
     public CartController(Logger logger){
         this.logger = logger;
@@ -95,5 +99,15 @@ public class CartController {
         model.addAttribute("shippingAddresses", shippingAddresses);
 
         return "cart/checkout";
+    }
+
+    @RequestMapping("/cart/complete")
+    @ResponseBody
+    public String completeOrder(@AuthenticationPrincipal OAuth2User principal, HttpSession session, @RequestParam Long shippingId, @RequestParam Long billingId, @RequestParam Long paymentId) {
+        System.out.println("Completing order: " + shippingId + " | " + billingId + " | " + paymentId);
+        Cart cart = getCart(session);
+        Order finalOrder = new Order(cart.getTotal(), this.userService.getUser(principal), billingId, shippingId, paymentId);
+        this.orderService.addOrder(finalOrder);
+        return ("Order " + finalOrder.getId() + " Was Successful!");
     }
 }

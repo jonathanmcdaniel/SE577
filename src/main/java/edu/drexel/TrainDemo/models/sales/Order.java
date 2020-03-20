@@ -1,11 +1,7 @@
 package edu.drexel.TrainDemo.models.sales;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.*;
 
-import edu.drexel.TrainDemo.models.sales.ticket.Ticket;
 import edu.drexel.TrainDemo.models.users.UserEntity;
 
 @Entity
@@ -22,23 +18,25 @@ public class Order {
     @Column(name = "user_id")
     private Long userId;
 
-    /*
     @Column(name = "billing_id")
-    private Long billing_id;
+    private Long billingId;
 
-    @Column(name = "mailing_id")
-    private Long mailing_id;
+    @Column(name = "shipping_id")
+    private Long shippingId;
 
     @Column(name = "payment_id")
-    private Long payment_id;
-     */
+    private Long paymentId;
+
 
     protected Order() {
     }
 
-    public Order(double price, UserEntity user){
+    public Order(double price, UserEntity user, Long shippingId, Long billingId, Long paymentId){
         this.price = price;
         this.userId = user.getId();
+        this.billingId = billingId;
+        this.shippingId = shippingId;
+        this.paymentId = paymentId;
     }
 
     public Long getId() {
@@ -48,6 +46,19 @@ public class Order {
     // public void setId(Long id) {
     //     this.id = id;
     // }
+
+
+    public Long getBillingId() {
+        return billingId;
+    }
+
+    public Long getShippingId() {
+        return shippingId;
+    }
+
+    public Long getPaymentId() {
+        return paymentId;
+    }
 
     public double getPrice() {
         return price;
