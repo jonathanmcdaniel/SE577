@@ -16,7 +16,7 @@ public interface UserService {
     UserEntity createUser(long id, String firstName, String lastName, String phoneNumber);
     void saveUser(OAuth2User principal, UserEntity newUser);
     void saveUser(UserEntity user, UserEntity newUser);
-    void removeUser(OAuth2User principal);
+    void removeUser(long id);
 
     boolean isAllowedAdminPanel(UserEntity userEntity);
     void changeGroupId(Long userid, Long groupId);

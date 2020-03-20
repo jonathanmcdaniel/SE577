@@ -1,5 +1,7 @@
 package edu.drexel.TrainDemo.controllers.users;
 
+import edu.drexel.TrainDemo.Utils;
+import edu.drexel.TrainDemo.configuration.LoggerConfiguration;
 import edu.drexel.TrainDemo.models.users.Group;
 import edu.drexel.TrainDemo.models.users.UserEntity;
 import edu.drexel.TrainDemo.services.users.GroupService;
@@ -9,10 +11,9 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import org.slf4j.Logger;
 
 import java.util.List;
 
@@ -54,6 +55,15 @@ public class AdminController {
         UserEntity oldUser = this.userService.getUser(userExternalId);
         UserEntity newUser = new UserEntity(firstName, lastName, phoneNumber, userExternalId, groupId);
         this.userService.saveUser(oldUser, newUser);
+    }
+
+    @RequestMapping("admin/removeUser")
+    @ResponseBody
+    void removeUser(@AuthenticationPrincipal OAuth2User principal, @RequestParam long userId) {
+        System.out.println("Removing user with id = " + userId);
+        if (Utils.intToLong(principal.getAttribute("id")) != userId) {
+            this.userService.removeUser(userId);
+        }
     }
 
     @GetMapping("admin/groups")

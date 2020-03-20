@@ -44,7 +44,7 @@
                             <td id="userPhNumber" th:text="${user.getPhoneNumber()}"></td>
                             <td id="userGroup" th:data="${user.getGroupId()}" th:text="${user.getGroupId()}"></td>
                             <td><button class="btn btn-primary" th:type="button" th:onclick="'adminEditUser(' + ${iter.index + 1} + ')'">Details</button></td>
-                            <td><button class="btn btn-primary" th:type="button">&times;</button></td>
+                            <td><a th:href="@{/admin/users}"><button class="btn btn-primary" th:type="button" th:onclick="'adminRemoveUser(' + ${user.getId()} + ')'">&times;</button></a></td>
                         </tr>
                     </tbody>
                 </table>

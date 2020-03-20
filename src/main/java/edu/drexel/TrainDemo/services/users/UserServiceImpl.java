@@ -9,9 +9,9 @@ import edu.drexel.TrainDemo.repositories.users.AddressRepository;
 import edu.drexel.TrainDemo.repositories.users.GroupRepository;
 import edu.drexel.TrainDemo.repositories.users.UserRepository;
 
-import org.apache.catalina.User;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
@@ -104,8 +104,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void removeUser(OAuth2User principal) {
-        this.userRepo.delete(getUser(principal));
+    public void removeUser(long id) {
+        System.out.println(id);
+        UserEntity removal = this.userRepo.findById(id);
+        if (removal != null) {
+            this.userRepo.delete(removal);
+        }
     }
 
 

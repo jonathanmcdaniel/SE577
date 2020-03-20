@@ -9,14 +9,13 @@ function showModal(modalid) {
 }
 
 function adminEditUser(userid) {
-    var data = $("#"+userid).find("#userGroup").html();
-    console.log(data);
-    $("#editUserModal").find('#externalId').val($("#"+userid).find("#userExternalId").html());
-    $("#editUserModal").find('#fname').val($("#"+userid).find("#userFirstName").html());
-    $("#editUserModal").find('#lname').val($("#"+userid).find("#userLastName").html());
-    $("#editUserModal").find('#phNumber').val($("#"+userid).find("#userPhNumber").html());
-    $("#editUserModal").find('#group').children("option[value=" + data + "]").attr('selected', 'selected');
-    $("#editUserModal").modal("show");
+    var editUserModal = $("#editUserModal");
+    editUserModal.find('#externalId').val($("#"+userid).find("#userExternalId").html());
+    editUserModal.find('#fname').val($("#"+userid).find("#userFirstName").html());
+    editUserModal.find('#lname').val($("#"+userid).find("#userLastName").html());
+    editUserModal.find('#phNumber').val($("#"+userid).find("#userPhNumber").html());
+    editUserModal.find('#group').children("option[value=" + data + "]").attr('selected', 'selected');
+    editUserModal.modal("show");
 }
 
 function adminSaveUser() {
@@ -26,6 +25,14 @@ function adminSaveUser() {
         lastName: $("#editUserModal").find('#lname').val(),
         phoneNumber: $("#editUserModal").find('#phNumber').val(),
         groupId: $("#editUserModal").find('#group').children("option:selected").val()
+    });
+}
+
+function adminRemoveUser(userid) {
+    $.post("/admin/removeUser", {
+        userId: userid
+    }, function () {
+        console.log("done removing user");
     });
 }
 
