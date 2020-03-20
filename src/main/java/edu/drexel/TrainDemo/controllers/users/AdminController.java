@@ -2,8 +2,10 @@ package edu.drexel.TrainDemo.controllers.users;
 
 import edu.drexel.TrainDemo.Utils;
 import edu.drexel.TrainDemo.configuration.LoggerConfiguration;
+import edu.drexel.TrainDemo.models.sales.Order;
 import edu.drexel.TrainDemo.models.users.Group;
 import edu.drexel.TrainDemo.models.users.UserEntity;
+import edu.drexel.TrainDemo.services.sales.OrderService;
 import edu.drexel.TrainDemo.services.users.GroupService;
 import edu.drexel.TrainDemo.services.users.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,9 @@ import org.springframework.web.bind.annotation.*;
 
 import org.slf4j.Logger;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class AdminController {
@@ -25,6 +29,9 @@ public class AdminController {
 
     @Autowired
     GroupService groupService;
+
+    @Autowired
+    OrderService orderService;
 
     @GetMapping("/admin/dashboard")
     String adminDashboard(@AuthenticationPrincipal OAuth2User principal) {
@@ -73,6 +80,23 @@ public class AdminController {
             List<Group> groups = this.groupService.getGroups();
             model.addAttribute("groups", groups);
             return "admin/groups";
+        } else {
+            return "admin/access_denied";
+        }
+    }
+
+    @GetMapping("admin/orders")
+    String manageOrders(@AuthenticationPrincipal OAuth2User principal, Model model) {
+        UserEntity currentUser = this.userService.getUser(principal);
+        if (currentUser != null && this.userService.isAllowedAdminPanel(currentUser)) {
+            List<Order> orders = this.orderService.getAllOrders();
+            Map<Long, String> userMap = new HashMap<>();
+            for (UserEntity user : this.userService.getUsers()) {
+                userMap.put(user.getId(), user.getFirstName() + " " + user.getLastName());
+            }
+            model.addAttribute("orders", orders);
+            model.addAttribute("userMap", userMap);
+            return "admin/orders";
         } else {
             return "admin/access_denied";
         }
