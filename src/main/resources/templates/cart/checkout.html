@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="base::header"/>
+</head>
+<body>
+<th:block th:replace="base::navbar"/>
+<main role="main">
+    <div class="jumbotron">
+        <div class="container">
+            <h1>My Cart</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="container">
+            <div class="row spacer">
+                <div class="col">
+                    <div class="container address-container">
+                        <th:block th:each="ticket,iter : ${cart.getItems()}">
+                            <div class="row container address">
+                                <p>
+                                    <a class="address-header"><pre><a>Ticket #</a><a th:text="${iter.index + 1}"></a></pre><br></a>
+                                    <pre><a>From: </a><a th:text="${ticket.getFrom()}"></a></pre><br>
+                                    <pre><a>To: </a><a th:text="${ticket.getTo()}"></a></pre><br>
+                                    <pre><a>Price: </a><a th:text="${ticket.getPrice()}"></a></pre><br>
+                                </p>
+                            </div>
+                        </th:block>
+                    </div>
+                </div>
+            </div>
+            <div class="row spacer">
+                <div class="col col-6">
+                    <div class="container address-container">
+                        <a class="address-header">Choose a Billing Address</a>
+                        <div class="row">
+                            <select type="name" class="form-control address-select" id="billingAddress">
+                                <option value="">-- Select Billing Address --</option>
+                                <option th:each="address,iter : ${billingAddresses}" th:value="'billing'+${iter.index + 1}" th:text="'Billing Address ' + ${iter.index + 1}"></option>
+                            </select>
+                        </div>
+                        <br>
+                        <div th:each="address,iter : ${billingAddresses}" class="container address">
+                            <div class="row address-header">
+                                <pre>Billing Info #</a><a th:text="${iter.index + 1}"></a>:</pre>
+                            </div>
+                            <div th:id="'billing'+${iter.index + 1}" class="row" th:object="${address.getId()}">
+                                <p>
+                                    <a th:id="addrName" th:text="${address.getName()}"></a><br>
+                                    <a th:id="addrLine1" th:text="${address.getLine1()}"></a><br>
+                                    <a th:id="addrLine2" th:if="${address.getLine2() != ''}" th:text="${address.getLine2()}"></a><br th:if="${address.getLine2() != ''}">
+                                    <a th:id="addrCity" th:text="${address.getCity()}"></a>, <a th:id="addrState" th:text="${address.getState()}"></a> <a th:id="addrZip" th:text="${address.getZip()}"></a><br>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col col-6">
+                    <div class="container address-container">
+                        <a class="address-header">Choose a Shipping Address</a>
+                        <div class="row">
+                            <select type="name" class="form-control address-select" id="shippingAddress">
+                                <option value="">-- Select Shipping Address --</option>
+                                <option th:each="address,iter : ${shippingAddresses}" th:value="'shipping'+${iter.index + 1}" th:text="'Shipping Address ' + ${iter.index + 1}"></option>
+                            </select>
+                        </div>
+                        <br>
+                        <div th:each="address,iter : ${shippingAddresses}" class="container address">
+                            <div class="row address-header">
+                                <pre>Shipping Info #</a><a th:text="${iter.index + 1}"></a>:</pre>
+                            </div>
+                            <div th:id="'shipping'+${iter.index + 1}" class="row" th:object="${address.getId()}">
+                                <p class="ticket-para">
+                                    <a th:id="addrName" th:text="${address.getName()}"></a><br>
+                                    <a th:id="addrLine1" th:text="${address.getLine1()}"></a><br>
+                                    <a th:id="addrLine2" th:if="${address.getLine2() != ''}" th:text="${address.getLine2()}"></a><br th:if="${address.getLine2() != ''}">
+                                    <a th:id="addrCity" th:text="${address.getCity()}"></a>, <a th:id="addrState" th:text="${address.getState()}"></a> <a th:id="addrZip" th:text="${address.getZip()}"></a><br>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

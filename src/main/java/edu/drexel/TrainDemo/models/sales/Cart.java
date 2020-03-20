@@ -40,6 +40,14 @@ public class Cart {
 		}
 	}
 
+	public double getTotal() {
+		double total = 0.0;
+		for (Ticket ticket : this.items) {
+			total += ticket.getPrice();
+		}
+		return total;
+	}
+
 	@Override
 	public String toString(){
 		return "Cart{" +

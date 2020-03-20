@@ -4,7 +4,12 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import edu.drexel.TrainDemo.models.users.Address;
+import edu.drexel.TrainDemo.services.users.UserService;
 import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,6 +23,9 @@ import edu.drexel.TrainDemo.models.sales.ticket.Ticket;
 public class CartController {
 
     private final Logger logger;
+
+    @Autowired
+    UserService userService;
 
     public CartController(Logger logger){
         this.logger = logger;
@@ -40,7 +48,7 @@ public class CartController {
         List<Ticket> items = cart.getItems();
         model.addAttribute("cart", cart);
         model.addAttribute("items", items);
-
+        model.addAttribute("cartTotal", cart.getTotal());
         // ...
 
         return("cart");
@@ -74,5 +82,18 @@ public class CartController {
         session.setAttribute("Cart", cart);
 
         return "redirect:/cart";
+    }
+
+    @RequestMapping("/cart/checkout")
+    public String checkout(@AuthenticationPrincipal OAuth2User principal, HttpSession session, Model model) {
+        Cart cart = getCart(session);
+        List<Address> billingAddresses = this.userService.getBillingAddresses(principal);
+        List<Address> shippingAddresses = this.userService.getShippingAddresses(principal);
+
+        model.addAttribute("cart", cart);
+        model.addAttribute("billingAddresses", billingAddresses);
+        model.addAttribute("shippingAddresses", shippingAddresses);
+
+        return "cart/checkout";
     }
 }

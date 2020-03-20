@@ -22,6 +22,17 @@ public class Order {
     @Column(name = "user_id")
     private Long userId;
 
+    /*
+    @Column(name = "billing_id")
+    private Long billing_id;
+
+    @Column(name = "mailing_id")
+    private Long mailing_id;
+
+    @Column(name = "payment_id")
+    private Long payment_id;
+     */
+
     protected Order() {
     }
 

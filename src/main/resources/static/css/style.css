@@ -11,6 +11,7 @@ div.address-container {
     -moz-border-radius: 5px;
     border-radius: 5px;
     display: block;
+    height: 100%;
 }
 
 div.list-row {
@@ -34,4 +35,18 @@ ul.account-header {
 }
 body {
     margin-top: 50px;
+}
+
+.ticket-para {
+    -ms-word-wrap: normal;
+    word-wrap: normal;
+}
+
+.address-select {
+    margin: 10px;
+}
+
+.row.spacer {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
