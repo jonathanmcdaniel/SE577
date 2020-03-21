@@ -31,6 +31,7 @@
                             <th class="th-sm">Group ID</th>
                             <th class="th-sm">Group Name</th>
                             <th class="th-sm">Group Type</th>
+                            <th class="th-sm"># Users</th>
                             <th class="th-sm">Details</th>
                             <th class="th-sm">Delete</th>
                         </tr>
@@ -40,6 +41,7 @@
                             <td th:text="${group.getGroupId()}"></td>
                             <td th:text="${group.getGroupName()}"></td>
                             <td th:text="${group.getGroupType()}"></td>
+                            <td th:text="${groupMap.get(group.getGroupId())}"></td>
                             <td><button class="btn btn-primary" th:type="button">Details</button></td>
                             <td><button class="btn btn-primary" th:type="button">&times;</button></td>
                         </tr>
