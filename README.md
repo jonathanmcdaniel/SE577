@@ -10,6 +10,31 @@ TrainTicket System is a web application that simulates planning a trip and purch
 ## Notes to Instructor
 Changes have been made and will still need to be made to the system that deviate from what was orginally documented in deliverables 1 and 2. Updated documentation will be provided as part of our final submission.
 
+## Final Project Build Instructions (Team 4)
+* These instructions are very similar to the original build instructions.
+
+1. Clone this Repo or download a zip file.
+
+2. Download the latest version of [Postgres](https://www.postgresql.org/download/) for your OS. Install with the default options and remember the admin password you set.
+
+3. Open pgAdmin 4 (this comes with Postgres) and create a new database called "TrainDemo".
+
+4. run `init_tables.sql` and `init_tables_user.sql` then `init_data.sql` and `init_data_groups.sql` on your new database. This populates our database with some initial tables and data. The easiest way to run queries is with Query Tool (`Tools > Query Tool`) in pgAdmin 4.
+
+5. Update `src/main/resources/application.properties` with your Postgres password. Make sure not to commit changes to this file to source control.
+
+6. Add your GitHub `client-id` and `client-secret` to your `application.properites`. See the "Authentication" section.
+
+7. Run the project in IntelliJ, Eclipse, or on the command line with
+       ```
+       mvnw clean package
+       java -jar target/TrainDemo-0.0.1-SNAPSHOT.jar
+       ```
+8.  Visit `localhost:8080` in a browser.
+
+
+
+
 ## Getting Started
 
 1. Fork this repository.
