@@ -53,6 +53,7 @@
                         <th scope="col">Arrival Station</th>
                         <th scope="col">Departure Time</th>
                         <th scope="col">Arrival Time</th>
+                        <th scope="col">Price</th>
                         <th scope="col">Add to Cart</th>
                     </tr>
                 </thead>
@@ -64,6 +65,7 @@
                             <td th:text="${path.to.getName()}"></td>
                             <td th:text="${path.departureTime}"></td>
                             <td th:text="${path.arrivalTime}"></td>
+                            <td>$10.00</td>
                             <td>
                                 <form method="post" th:action="@{/cart/add}" th:object="${ticket}">
                                     <input hidden th:name="departureDate" th:value="${path.departureDate}"/>
