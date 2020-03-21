@@ -20,7 +20,7 @@ Changes have been made and will still need to be made to the system that deviate
 
 4. Open pgAdmin 4 (this comes with Postgres) and create a new database called "TrainDemo".
 
-5. Unzip `amtrak_sql.zip` and run `init_tables.sql` and `init_tables_user.sql` then `init_data.sql` on your new database. This populates our database with some initial tables and data. The easiest way to run queries is with Query Tool (`Tools > Query Tool`) in pgAdmin 4.
+5. Unzip `amtrak_sql.zip` and run `init_tables.sql` and `init_tables_user.sql` then `init_data.sql` and `init_data_groups.sql` on your new database. This populates our database with some initial tables and data. The easiest way to run queries is with Query Tool (`Tools > Query Tool`) in pgAdmin 4.
 
 6. Update `src/main/resources/application.properties` with your Postgres password. Make sure not to commit changes to this file to source control.
 
