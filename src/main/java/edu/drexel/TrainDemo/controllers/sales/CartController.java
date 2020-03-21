@@ -18,7 +18,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import edu.drexel.TrainDemo.models.core.State;
 import edu.drexel.TrainDemo.models.sales.Cart;
+import edu.drexel.TrainDemo.models.sales.CreditCard;
 import edu.drexel.TrainDemo.models.sales.ticket.Ticket;
 
 @Controller
@@ -98,10 +100,14 @@ public class CartController {
         List<Address> billingAddresses = this.userService.getBillingAddresses(principal);
         List<Address> shippingAddresses = this.userService.getShippingAddresses(principal);
 
+        Long userId = Utils.intToLong(principal.getAttribute("id"));
+        List<CreditCard> cards = this.paymentService.getCreditCards(userId);
+
         model.addAttribute("cart", cart);
         model.addAttribute("billingAddresses", billingAddresses);
         model.addAttribute("shippingAddresses", shippingAddresses);
-        model.addAttribute("cards", this.paymentService.getCreditCards(Utils.intToLong(principal.getAttribute("id"))));
+        model.addAttribute("states", State.values());
+        model.addAttribute("cards", cards);
         model.addAttribute("cartTotal", cart.getTotal());
 
         return "cart/checkout";

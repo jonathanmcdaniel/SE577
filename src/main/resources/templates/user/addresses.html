@@ -56,16 +56,15 @@
                                 <input type="text" class="form-control" id="city">
                             </div>
                             <div class="form-group">
-                                <label for="zip">Zip Code:</label>
-                                <input id="zip" name="zip" type="text" pattern="[0-9]*">
-                            </div>
-                            <div class="form-group">
                                 <label for="state">State:</label>
                                 <select type="name" class="form-control" id="state">
                                     <option value="">-- State --</option>
                                     <option th:each="state : ${states}" th:value="${state}" th:text="${state}"></option>
-
                                 </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="zip">Zip Code:</label>
+                                <input id="zip" name="zip" type="text" pattern="[0-9]*">
                             </div>
                             <div class="form-group">
                                 <a th:href="@{/user/dashboard}" th:if="${label == 'Billing'}"><button type="button" class="btn btn-primary" onclick="addAddress(true)">Save</button></a>

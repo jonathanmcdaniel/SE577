@@ -59,43 +59,41 @@
                             </div>
                         </div>
 
-                        <!-- 
-                            TODO: Make form appear if user selects "New Address"
-
-                        <form id="address-form">
+                        <form th:if="${billingAddresses.size()} == 0" id="billing-form">
                             <a>Enter New Billing Info:</a>
                             <div class="form-group">
                                 <label for="name">Name:</label>
-                                <input type="text" class="form-control" id="name">
+                                <input type="text" class="form-control" id="billName">
                             </div>
                             <div class="form-group">
                                 <label for="addr1">Address Line 1:</label>
-                                <input type="text" class="form-control" id="addr1">
+                                <input type="text" class="form-control" id="billAddr1">
                             </div>
                             <div class="form-group">
                                 <label for="addr2">Address Line 2:</label>
-                                <input type="text" class="form-control" id="addr2">
+                                <input type="text" class="form-control" id="billAddr2">
                             </div>
                             <div class="form-group">
                                 <label for="city">City:</label>
-                                <input type="text" class="form-control" id="city">
-                            </div>
-                            <div class="form-group">
-                                <label for="zip">Zip Code:</label>
-                                <input id="zip" name="zip" type="text" pattern="[0-9]*">
+                                <input type="text" class="form-control" id="billCity">
                             </div>
                             <div class="form-group">
                                 <label for="state">State:</label>
                                 <select type="name" class="form-control" id="state">
                                     <option value="">-- State --</option>
                                     <option th:each="state : ${states}" th:value="${state}" th:text="${state}"></option>
-
                                 </select>
                             </div>
                             <div class="form-group">
-                                <button type="button" class="btn btn-primary" onclick="addAddress(true)">Save</button>
+                                <label for="zip">Zip Code:</label>
+                                <input id="billZip" name="zip" type="text" pattern="[0-9]*">
                             </div>
-                        </form> -->
+                            <div class="form-group">
+                                <a th:href="@{''}">
+                                    <button type="button" class="btn btn-primary" onclick="addBillingAddress(true)">Save</button>
+                                </a>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
@@ -123,44 +121,42 @@
                                 </p>
                             </div>
                         </div>
-                        
-                        <!-- 
-                            TODO: Make form appear if user selects "New Address"
-                        
-                            <form id="address-form">
-                            <a>Enter New Billing Info:</a>
+ 
+                        <form th:if="${shippingAddresses.size()} == 0" id="shipping-form">
+                            <a>Enter New Shipping Info:</a>
                             <div class="form-group">
                                 <label for="name">Name:</label>
-                                <input type="text" class="form-control" id="name">
+                                <input type="text" class="form-control" id="shipName">
                             </div>
                             <div class="form-group">
                                 <label for="addr1">Address Line 1:</label>
-                                <input type="text" class="form-control" id="addr1">
+                                <input type="text" class="form-control" id="shipAddr1">
                             </div>
                             <div class="form-group">
                                 <label for="addr2">Address Line 2:</label>
-                                <input type="text" class="form-control" id="addr2">
+                                <input type="text" class="form-control" id="shipAddr2">
                             </div>
                             <div class="form-group">
                                 <label for="city">City:</label>
-                                <input type="text" class="form-control" id="city">
-                            </div>
-                            <div class="form-group">
-                                <label for="zip">Zip Code:</label>
-                                <input id="zip" name="zip" type="text" pattern="[0-9]*">
+                                <input type="text" class="form-control" id="shipCity">
                             </div>
                             <div class="form-group">
                                 <label for="state">State:</label>
-                                <select type="name" class="form-control" id="state">
+                                <select type="name" class="form-control" id="shipState">
                                     <option value="">-- State --</option>
                                     <option th:each="state : ${states}" th:value="${state}" th:text="${state}"></option>
-    
                                 </select>
                             </div>
                             <div class="form-group">
-                                <button type="button" class="btn btn-primary" onclick="addAddress(false)">Save</button>
+                                <label for="zip">Zip Code:</label>
+                                <input id="shipZip" name="zip" type="text" pattern="[0-9]*">
                             </div>
-                        </form> -->
+                            <div class="form-group">
+                                <a th:href="@{''}">
+                                    <button type="button" class="btn btn-primary" onclick="addShippingAddress(false)">Save</button>
+                                </a>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -182,11 +178,55 @@
                             <a hidden th:id="'card'+${iter.index + 1}" th:text="${card.getId()}"></a>
                             <p>
                                 <a th:id="cardName" th:text="${card.getName()}"></a><br>
-                                <pre><a>Card #: </a><a th:id="cardNumber" th:text="${card.getCardNumber()"></a><br></pre>
+                                <pre><a>Card #: </a><a th:id="cardNumber" th:text="${card.getCardNumber()}"></a><br></pre>
                             <pre><a>Exp: </a><a th:id="cardExp" th:text="${card.getCardExpMonth()} + '/' + ${card.getCardExpYear()}"></a>  <a>cvv: </a><a th:id="cardCvv" th:text="${card.getCvv()}"></a></pre>
                             </p>
                         </div>
                     </div>
+                    <form th:if="${cards.size()} == 0">
+                        <div class="form-group owner">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name">
+                        </div>
+                        <div class="form-group" id="card-number-field">
+                            <label for="number">Card Number</label>
+                            <input type="text" class="form-control" id="number">
+                        </div>
+                        <div class="form-group CVV">
+                            <label for="cvv">CVV</label>
+                            <input type="text" class="form-control" id="cvv">
+                        </div>
+                        <div class="form-group" id="expDate">
+                            <label>Expiration Date</label>
+                            <select id="month">
+                                <option value="01">January</option>
+                                <option value="02">February </option>
+                                <option value="03">March</option>
+                                <option value="04">April</option>
+                                <option value="05">May</option>
+                                <option value="06">June</option>
+                                <option value="07">July</option>
+                                <option value="08">August</option>
+                                <option value="09">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                            <select id="year">
+                                <option value="20"> 2020</option>
+                                <option value="21"> 2021</option>
+                                <option value="22"> 2022</option>
+                                <option value="23"> 2023</option>
+                                <option value="24"> 2024</option>
+                                <option value="25"> 2025</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="pay-now">
+                            <a th:href="@{''}">
+                                <button type="button" class="btn btn-primary" id="confirm-purchase" onclick="createCreditCard()">Confirm</button>
+                            </a>
+                        </div>
+                    </form>
                 </div>
             </div>
             <form th:action='@{/charge}' method='POST' id='checkout-form' xmlns:th="http://www.w3.org/1999/xhtml">
@@ -204,7 +244,9 @@
                 </script>
             </form>
             <div class="row spacer">
-                <a class="checkout-button"><button class="btn btn-primary checkout-button" th:type="button" th:onclick="completeOrder()">Complete Order</button></a>
+                <a class="checkout-button" th:href="@{/../user/orders}">
+                    <button class="btn btn-primary checkout-button" th:type="button" th:onclick="completeOrder()">Complete Order</button>
+                </a>
             </div>
         </div>
     </div>
