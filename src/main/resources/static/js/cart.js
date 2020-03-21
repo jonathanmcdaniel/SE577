@@ -16,6 +16,7 @@ function completeOrder() {
         paymentId: paymentId
     }, function (returnstring) {
         console.log(returnstring);
+        $('#success').removeClass("invisible");
     });
 }
 

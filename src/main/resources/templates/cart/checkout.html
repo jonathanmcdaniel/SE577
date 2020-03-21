@@ -244,8 +244,14 @@
                 </script>
             </form>
             <div class="row spacer">
-                <a class="checkout-button" th:href="@{/../user/orders}">
+                <!-- <a class="checkout-button" th:href="@{/../user/orders}"> -->
                     <button class="btn btn-primary checkout-button" th:type="button" th:onclick="completeOrder()">Complete Order</button>
+                <!-- </a> -->
+            </div>
+            <div id="success" class="invisible">
+                <p>Your order was successfully processed!</p>
+                <a class="checkout-button" th:href="@{/../user/orders}">
+                    <button class="btn btn-primary checkout-button" th:type="button">View My Orders</button>
                 </a>
             </div>
         </div>

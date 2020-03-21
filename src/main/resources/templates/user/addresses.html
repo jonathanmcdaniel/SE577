@@ -38,7 +38,8 @@
                 <div class="row list-row">
                     <div class="container address-container">
                         <form id="address-form">
-                            <a>Enter New Billing Info:</a>
+                            <h2 th:if="${label == 'Billing'}">Enter New Billing Info:</h2>
+                            <h2 th:if="${label != 'Billing'}">Enter New Shipping Info:</h2>
                             <div class="form-group">
                                 <label for="name">Name:</label>
                                 <input type="text" class="form-control" id="name">
