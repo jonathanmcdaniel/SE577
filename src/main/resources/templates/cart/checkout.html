@@ -169,7 +169,7 @@
                     <a class="address-header">Choose a Credit Card</a>
                     <div class="row">
                         <select type="name" class="form-control address-select" id="creditCard">
-                            <option value="">-- Select Credit Card --</option>
+                            <option value="0">-- Select Credit Card --</option>
                             <option th:each="card,iter : ${cards}" th:value="'card'+${iter.index + 1}" th:text="'Credit Card ' + ${iter.index + 1}"></option>
                         </select>
                     </div>
