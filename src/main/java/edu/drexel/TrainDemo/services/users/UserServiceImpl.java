@@ -112,6 +112,10 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
+    public int getNumUsersInGroup(long groupId) {
+        return this.userRepo.countByGroupId(groupId);
+    }
 
     @Override
     public List<Address> getBillingAddresses(OAuth2User principal) {

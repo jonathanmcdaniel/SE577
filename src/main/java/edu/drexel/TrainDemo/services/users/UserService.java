@@ -18,6 +18,7 @@ public interface UserService {
     void saveUser(UserEntity user, UserEntity newUser);
     void removeUser(long id);
 
+    int getNumUsersInGroup(long groupId);
     boolean isAllowedAdminPanel(UserEntity userEntity);
     void changeGroupId(Long userid, Long groupId);
 

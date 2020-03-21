@@ -10,4 +10,5 @@ public interface UserRepository extends CrudRepository<UserEntity, Long> {
     List<UserEntity> findByLastName(String lastName);
     UserEntity findById(long id);
     UserEntity findByExternalId(long externalId);
+    int countByGroupId(long groupId);
 }

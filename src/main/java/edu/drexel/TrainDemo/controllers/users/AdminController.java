@@ -79,6 +79,11 @@ public class AdminController {
         if (currentUser != null && this.userService.isAllowedAdminPanel(currentUser)) {
             List<Group> groups = this.groupService.getGroups();
             model.addAttribute("groups", groups);
+            Map<Long, Integer> groupMap = new HashMap<>();
+            for (Group group : this.groupService.getGroups()) {
+                groupMap.put(group.getGroupId(), this.userService.getNumUsersInGroup(group.getGroupId()));
+            }
+            model.addAttribute("groupMap", groupMap);
             return "admin/groups";
         } else {
             return "admin/access_denied";
