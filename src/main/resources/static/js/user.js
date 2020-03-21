@@ -57,3 +57,10 @@ function createCreditCard() {
     });
 
 }
+
+function deleteCreditCard(ccId) {
+    console.log(ccId);
+    $.post("/payment/removeCC", {
+        creditCardId: ccId
+    });
+}

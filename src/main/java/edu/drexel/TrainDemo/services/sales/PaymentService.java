@@ -10,6 +10,7 @@ public interface PaymentService {
 
     void addCreditCard(long userid, List<String> params);
     List<CreditCard> getCreditCards(Long userid);
+    void removeCreditCard(long creditCardId);
 
 
 }

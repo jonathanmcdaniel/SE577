@@ -21,14 +21,14 @@
                         <pre><a class="address-header">Saved Credit Card Info:</a></pre>
                         <div th:each="card,iter : ${cards}" class="container address">
                             <div class="row address-header">
-                                <pre><a>Credit Card Info #</a><a th:text="${iter.index + 1}"></a>:</pre>
+                                <a>Credit Card Info #</a><a th:text="${iter.index + 1}"></a>:
                             </div>
                             <div th:id="${iter.index + 1}" class="row">
                                 <p>
-                                    <a th:id="cardName" th:text="${card.getName()}"></a><br>
-                                    <pre><a>Card #: </a><a th:id="cardNumber" th:text="${card.getCardNumber()}"></a><br></pre>
-                                    <pre><a>Exp: </a><a th:id="cardExp" th:text="${card.getCardExpMonth()} + '/' + ${card.getCardExpYear()}"></a>  <a>cvv: </a><a th:id="cardCvv" th:text="${card.getCvv()}"></a></pre>
-                                    <a th:href="@{/user/dashboard}"><button type="button" class="btn btn-primary" th:onclick="'deleteCreditCard(' + ${iter.index + 1}')'">Delete Card</button></a><br>
+                                    <a th:id="cardName" th:text="${card.getName()}"></a><br><br>
+                                    <pre><a>Card #: </a><a th:id="cardNumber" th:text="${card.getCardNumber()}"></a></pre><br>
+                                    <pre><a>Exp: </a><a th:id="cardExp" th:text="${card.getCardExpMonth()} + '/' + ${card.getCardExpYear()}"></a>  <a>cvv: </a><a th:id="cardCvv" th:text="${card.getCvv()}"></a></pre><br>
+                                    <a th:href="@{/user/dashboard}"><button type="button" class="btn btn-primary" th:onclick="'deleteCreditCard(' + ${card.getId()} + ')'">Delete Card</button></a><br>
                                 </p>
                             </div>
                         </div>
@@ -76,7 +76,7 @@
                                 </select>
                             </div>
                             <div class="form-group" id="pay-now">
-                                <button type="button" class="btn btn-primary" id="confirm-purchase" onclick="createCreditCard()">Confirm</button>
+                                <a th:href="@{/user/dashboard}"><button type="button" class="btn btn-primary" id="confirm-purchase" onclick="createCreditCard()">Confirm</button></a>
                             </div>
                         </form>
                     </div>

@@ -22,6 +22,11 @@ public class PaymentServiceImpl implements PaymentService{
     public List<CreditCard> getCreditCards(Long userid) {
         return this.creditCardRepo.findAllByUserId(userid);
     }
+
+    @Override
+    public void removeCreditCard(long creditCardId) {
+        this.creditCardRepo.deleteById(creditCardId);
+    }
 }
 
 

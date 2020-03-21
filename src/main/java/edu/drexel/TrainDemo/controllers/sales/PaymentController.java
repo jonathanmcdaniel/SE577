@@ -47,6 +47,14 @@ public class PaymentController {
         //return "redirect:/cart/paymentConfirmation";
     }
 
+    @RequestMapping("/payment/removeCC")
+    @ResponseBody
+    public void deleteCreditCard(@RequestParam Long creditCardId) {
+        System.out.println(creditCardId);
+        this.paymentService.removeCreditCard(creditCardId);
+        //return "redirect:/cart/paymentConfirmation";
+    }
+
     @RequestMapping("/user/payments")
     public String managePayments(@AuthenticationPrincipal OAuth2User principal, Model model) {
         Long userId = Utils.intToLong(principal.getAttribute("id"));
