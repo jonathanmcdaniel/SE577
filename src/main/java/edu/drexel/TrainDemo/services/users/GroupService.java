@@ -21,4 +21,6 @@ public interface GroupService
 
 	void createGroup(String groupName, GroupType groupType);
 
+	Long findGroupIdByType(GroupType type);
+
 } // End of GroupServices.

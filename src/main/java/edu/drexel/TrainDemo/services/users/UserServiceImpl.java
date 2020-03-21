@@ -61,9 +61,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserEntity createUser(long id, String firstName, String lastName, String phoneNumber) {
-        Long groupid = this.groupRepo.findByGroupName("DEFAULT").getGroupId();
-        UserEntity newUser = new UserEntity(firstName, lastName, phoneNumber, id, groupid);
+    public UserEntity createUser(long id, String firstName, String lastName, String phoneNumber, Long groupId) {
+        //Long groupid = this.groupRepo.findByGroupName("DEFAULT").getGroupId();
+        UserEntity newUser = new UserEntity(firstName, lastName, phoneNumber, id, groupId);
         System.out.println("createUser: " + newUser.getExternalId() + " | " + newUser.getFirstName() + " | " + newUser.getLastName());
         this.userRepo.save(newUser);
         getUser(id);

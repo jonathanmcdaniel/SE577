@@ -1,6 +1,7 @@
 package edu.drexel.TrainDemo.controllers.users;
 
 import edu.drexel.TrainDemo.models.users.Address;
+import edu.drexel.TrainDemo.models.users.GroupType;
 import edu.drexel.TrainDemo.services.users.GroupService;
 import edu.drexel.TrainDemo.services.users.UserService;
 import edu.drexel.TrainDemo.Utils;
@@ -72,7 +73,12 @@ public class UserController {
     @RequestMapping("/user/new")
     RedirectView newUser(@AuthenticationPrincipal OAuth2User principal, @RequestParam String firstName, @RequestParam String lastName, @RequestParam String phoneNumber) {
         System.out.println(principal.getAttribute("id") + " | " + firstName + " | " + lastName);
-        this.userService.createUser(Utils.intToLong(principal.getAttribute("id")), firstName, lastName, phoneNumber);
+
+        /**
+         * This is only for evaluation purposes! We are making the initial user an admin...
+         */
+        Long groupId = this.groupService.findGroupIdByType(GroupType.ADMIN);
+        this.userService.createUser(Utils.intToLong(principal.getAttribute("id")), firstName, lastName, phoneNumber, groupId);
         return new RedirectView("/");
     }
 

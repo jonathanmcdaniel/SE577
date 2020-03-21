@@ -60,6 +60,12 @@ public class GroupServiceImpl implements GroupService
         this.groupRepository.save(newGroup);
     }
 
+    @Override
+    public Long findGroupIdByType(GroupType type) {
+        Group group = this.groupRepository.findByGroupType(type);
+        return group.getGroupId();
+    }
+
 
 
 } // End of GroupServicesImpl.
