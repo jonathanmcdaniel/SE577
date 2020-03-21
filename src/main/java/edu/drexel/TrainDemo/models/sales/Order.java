@@ -31,9 +31,9 @@ public class Order {
     protected Order() {
     }
 
-    public Order(double price, UserEntity user, Long shippingId, Long billingId, Long paymentId){
+    public Order(double price, long userId, Long shippingId, Long billingId, Long paymentId){
         this.price = price;
-        this.userId = user.getId();
+        this.userId = userId;
         this.billingId = billingId;
         this.shippingId = shippingId;
         this.paymentId = paymentId;

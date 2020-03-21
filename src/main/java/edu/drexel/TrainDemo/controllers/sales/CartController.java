@@ -106,7 +106,7 @@ public class CartController {
     public String completeOrder(@AuthenticationPrincipal OAuth2User principal, HttpSession session, @RequestParam Long shippingId, @RequestParam Long billingId, @RequestParam Long paymentId) {
         System.out.println("Completing order: " + shippingId + " | " + billingId + " | " + paymentId);
         Cart cart = getCart(session);
-        Order finalOrder = new Order(cart.getTotal(), this.userService.getUser(principal), billingId, shippingId, paymentId);
+        Order finalOrder = new Order(cart.getTotal(), this.userService.getUser(principal).getId(), billingId, shippingId, paymentId);
         this.orderService.addOrder(finalOrder);
         return ("Order " + finalOrder.getId() + " Was Successful!");
     }

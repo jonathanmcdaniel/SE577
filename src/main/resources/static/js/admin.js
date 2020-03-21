@@ -36,6 +36,28 @@ function adminRemoveUser(userid) {
     });
 }
 
+function adminRemoveOrder(orderid) {
+    $.post("/order/remove", {
+        orderId: orderid
+    });
+}
+
+function showEditOrderModal(orderid) {
+    var editModal = $("#editOrderModal");
+    editModal.find('#orderId').val($("#"+orderid).find("#orderId").html());
+    editModal.find('#customerId').val($("#"+orderid).find("#customerId").html());
+    editModal.find('#customerName').val($("#"+orderid).find("#customerName").html());
+    editModal.find('#price').val($("#"+orderid).find("#price").html());
+    editModal.modal("show");
+}
+
+function updateOrder() {
+    $.post("/order/update", {
+        orderId: $('#editOrderModal').find("#orderId").val(),
+        price: $('#editOrderModal').find("#price").val()
+    });
+}
+
 function addGroup() {
     var groupName = $('#newGroupModal').find('#gname').val();
     var groupType = $('#newGroupModal').find('#gtype').children("option:selected").val();

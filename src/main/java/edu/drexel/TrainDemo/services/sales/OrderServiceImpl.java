@@ -33,4 +33,14 @@ public class OrderServiceImpl implements OrderService {
         return allOrders;
     }
 
+    public void removeOrder(Order order) {
+        this.orderRepository.delete(order);
+    }
+
+    public void updateOrderPrice(long orderId, double price) {
+        Order orderToUpdate = this.getOrder(orderId);
+        orderToUpdate.setPrice(price);
+        this.orderRepository.save(orderToUpdate);
+    }
+
 }

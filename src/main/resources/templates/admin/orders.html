@@ -37,13 +37,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="order : ${orders}">
-                            <td th:text="${order.getId()}"></td>
-                            <td th:text="${order.getUserId()}"></td>
-                            <td th:text="${userMap.get(order.getUserId())}"></td>
-                            <td th:text="${order.getPrice()}"></td>
-                            <td><button class="btn btn-primary" th:type="button">Details</button></td>
-                            <td><button class="btn btn-primary" th:type="button">&times;</button></td>
+                        <tr th:each="order,iter : ${orders}" th:id="${iter.index+1}">
+                            <td id="orderId" th:text="${order.getId()}"></td>
+                            <td id="customerId" th:text="${order.getUserId()}"></td>
+                            <td id="customerName" th:text="${userMap.get(order.getUserId())}"></td>
+                            <td id="price" th:text="${order.getPrice()}"></td>
+                            <td><button class="btn btn-primary" th:type="button" th:onclick="'showEditOrderModal(' + ${iter.index+1} + ')'">Details</button></td>
+                            <td>
+                                <form method="post" th:action="@{/order/remove}" th:object="${orderToRemove}">
+                                    <input hidden th:name="id" th:value="${order.getId()}"/>
+                                    <input hidden th:name="price" th:value="${order.getPrice()}"/>
+                                    <input hidden th:name="userId" th:value="${order.getUserId()}"/>
+                                    <input hidden th:name="billingId" th:value="${order.getBillingId()}"/>
+                                    <input hidden th:name="shippingId" th:value="${order.getShippingId()}"/>
+                                    <input hidden th:name="paymentId" th:value="${order.getPaymentId()}"/>
+                                    <a th:href="@{/admin/dashboard}"><button class="btn btn-sm btn-primary" th:type="button" th:onclick="'adminRemoveOrder(' + ${iter.index + 1} +')'">&times;</button></a>
+                                </form>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -51,11 +61,11 @@
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="newGroupModal">
+    <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="editOrderModal">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="newGroupModalLongTitle">New Group</h5>
+                    <h5 class="modal-title" id="editOrderModalLongTitle">Edit Order</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -65,20 +75,23 @@
                         <p>Please enter the information for the new group:</p>
                         <form>
                             <div class="form-group ">
-                                <label for="gname">Group Name: </label>
-                                <input type="text" class="form-control" id="gname">
+                                <label for="orderId">Order ID: </label>
+                                <input type="text" class="form-control" id="orderId" readonly>
+                            </div>
+                            <div class="form-group ">
+                                <label for="customerId">Customer ID: </label>
+                                <input type="text" class="form-control" id="customerId" readonly>
+                            </div>
+                            <div class="form-group ">
+                                <label for="customerName">Customer Name: </label>
+                                <input type="text" class="form-control" id="customerName" readonly>
+                            </div>
+                            <div class="form-group ">
+                                <label for="price">Price: </label>
+                                <input type="text" class="form-control" id="price">
                             </div>
                             <div class="form-group">
-                                <label for="gtype">Group Type:</label>
-                                <select type="name" class="form-control" id="gtype">
-                                    <option value="">-- Type --</option>
-                                    <option value="ADMIN">ADMIN</option>
-                                    <option value="EMPLOYEE">EMPLOYEE</option>
-                                    <option value="CUSTOMER">CUSTOMER</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <button onclick="addGroup()">Save</button>
+                                <button onclick="updateOrder()">Save</button>
                             </div>
                         </form>
                     </div>
