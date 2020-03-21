@@ -1,7 +1,12 @@
 package edu.drexel.TrainDemo.controllers.sales;
 
 import edu.drexel.TrainDemo.models.sales.Order;
+import edu.drexel.TrainDemo.models.users.UserEntity;
 import edu.drexel.TrainDemo.services.sales.OrderService;
+import edu.drexel.TrainDemo.services.users.UserService;
+
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -23,6 +28,9 @@ public class OrderController {
 	@Autowired
 	OrderService orderService;
 
+	@Autowired
+	UserService userService;
+
 	public OrderController(Logger logger){
 		this.logger = logger;
 	}
@@ -43,12 +51,16 @@ public class OrderController {
 	}
 
 
-	// @RequestMapping("/orders")
-	// public String getOrders(Model model){
+	@RequestMapping("/user/orders")
+	public String getOrders(@AuthenticationPrincipal OAuth2User principal, Model model){
 
-	// 	// ...
+		UserEntity user = userService.getUser(principal);
+		List<Order> orders = orderService.getAllOrders();
 
-	// 	return ("orders");
-	// }
+		model.addAttribute("orders", orders);
+
+		return ("user/orders");
+	}
+	
 	
 }

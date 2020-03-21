@@ -55,6 +55,44 @@
                                 </p>
                             </div>
                         </div>
+
+                        <!-- 
+                            TODO: Make form appear if user selects "New Address"
+
+                        <form id="address-form">
+                            <a>Enter New Billing Info:</a>
+                            <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input type="text" class="form-control" id="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="addr1">Address Line 1:</label>
+                                <input type="text" class="form-control" id="addr1">
+                            </div>
+                            <div class="form-group">
+                                <label for="addr2">Address Line 2:</label>
+                                <input type="text" class="form-control" id="addr2">
+                            </div>
+                            <div class="form-group">
+                                <label for="city">City:</label>
+                                <input type="text" class="form-control" id="city">
+                            </div>
+                            <div class="form-group">
+                                <label for="zip">Zip Code:</label>
+                                <input id="zip" name="zip" type="text" pattern="[0-9]*">
+                            </div>
+                            <div class="form-group">
+                                <label for="state">State:</label>
+                                <select type="name" class="form-control" id="state">
+                                    <option value="">-- State --</option>
+                                    <option th:each="state : ${states}" th:value="${state}" th:text="${state}"></option>
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-primary" onclick="addAddress(true)">Save</button>
+                            </div>
+                        </form> -->
                     </div>
                 </div>
 
@@ -82,6 +120,44 @@
                                 </p>
                             </div>
                         </div>
+                        
+                        <!-- 
+                            TODO: Make form appear if user selects "New Address"
+                        
+                            <form id="address-form">
+                            <a>Enter New Billing Info:</a>
+                            <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input type="text" class="form-control" id="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="addr1">Address Line 1:</label>
+                                <input type="text" class="form-control" id="addr1">
+                            </div>
+                            <div class="form-group">
+                                <label for="addr2">Address Line 2:</label>
+                                <input type="text" class="form-control" id="addr2">
+                            </div>
+                            <div class="form-group">
+                                <label for="city">City:</label>
+                                <input type="text" class="form-control" id="city">
+                            </div>
+                            <div class="form-group">
+                                <label for="zip">Zip Code:</label>
+                                <input id="zip" name="zip" type="text" pattern="[0-9]*">
+                            </div>
+                            <div class="form-group">
+                                <label for="state">State:</label>
+                                <select type="name" class="form-control" id="state">
+                                    <option value="">-- State --</option>
+                                    <option th:each="state : ${states}" th:value="${state}" th:text="${state}"></option>
+    
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-primary" onclick="addAddress(false)">Save</button>
+                            </div>
+                        </form> -->
                     </div>
                 </div>
             </div>

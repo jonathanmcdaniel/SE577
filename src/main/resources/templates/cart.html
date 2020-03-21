@@ -55,7 +55,14 @@
                 <div class="col-md-6">Total Cost:</div>
                 <div class="col-md-6 text-right">
                     <a th:text="${cartTotal}"></a><br/>
-                    <span th:if="${!items.isEmpty()}"><a th:href="@{/cart/checkout}"><button class="btn btn-primary">Checkout</button></a></span>
+                    <span class="unauthenticated">
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#signInModal">
+                            <button class="btn btn-primary">Sign In to Continue Checkout</button>
+                        </a>
+                    </span>
+                    <span class="authenticated" th:if="${!items.isEmpty()}">
+                        <a th:href="@{/cart/checkout}"><button class="btn btn-primary">Checkout</button></a>
+                    </span>
                 </div>
             </div>
             <span th:if="${items.isEmpty()}">Your cart is empty.</span>

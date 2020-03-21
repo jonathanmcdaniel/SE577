@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="base::header"/>
+    <link href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="/js/admin.js"></script>
+</head>
+<body>
+<th:block th:replace="base::navbar"/>
+<main role="main">
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <h1><a th:href="@{/user/dashboard}">My Account</a></h1>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="container">
+            <div class="row">
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th class="th-sm">Order ID</th>
+                            <th class="th-sm">Order Total</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <th:block th:each="order : ${orders}">
+                            <tr>
+                                <td th:text="${order.getId()}"></td>
+                                <td th:text="${order.getPrice()}"></td>
+                            </tr>
+                        </th:block>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
