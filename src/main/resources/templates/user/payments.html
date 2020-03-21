@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="base::header"/>
+</head>
+<body>
+<th:block th:replace="base::navbar"/>
+<main role="main">
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <h1><a th:href="@{/user/dashboard}">My Account</a></h1>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="row list-row">
+                    <div class="container address-container">
+                        <pre><a class="address-header">Saved Credit Card Info:</a></pre>
+                        <div th:each="card,iter : ${cards}" class="container address">
+                            <div class="row address-header">
+                                <pre><a>Credit Card Info #</a><a th:text="${iter.index + 1}"></a>:</pre>
+                            </div>
+                            <div th:id="${iter.index + 1}" class="row">
+                                <p>
+                                    <a th:id="cardName" th:text="${card.getName()}"></a><br>
+                                    <pre><a>Card #: </a><a th:id="cardNumber" th:text="${card.getCardNumber()}"></a><br></pre>
+                                    <pre><a>Exp: </a><a th:id="cardExp" th:text="${card.getCardExpMonth()} + '/' + ${card.getCardExpYear()}"></a>  <a>cvv: </a><a th:id="cardCvv" th:text="${card.getCvv()}"></a></pre>
+                                    <a th:href="@{/user/dashboard}"><button type="button" class="btn btn-primary" th:onclick="'deleteCreditCard(' + ${iter.index + 1}')'">Delete Card</button></a><br>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row list-row">
+                    <div class="container credit-card-form">
+                        <form>
+                            <div class="form-group owner">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name">
+                            </div>
+                            <div class="form-group CVV">
+                                <label for="cvv">CVV</label>
+                                <input type="text" class="form-control" id="cvv">
+                            </div>
+                            <div class="form-group" id="card-number-field">
+                                <label for="number">Card Number</label>
+                                <input type="text" class="form-control" id="number">
+                            </div>
+                            <div class="form-group" id="expDate">
+                                <label>Expiration Date</label>
+                                <select id="month">
+                                    <option value="01">January</option>
+                                    <option value="02">February </option>
+                                    <option value="03">March</option>
+                                    <option value="04">April</option>
+                                    <option value="05">May</option>
+                                    <option value="06">June</option>
+                                    <option value="07">July</option>
+                                    <option value="08">August</option>
+                                    <option value="09">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                                <select id="year">
+                                    <option value="20"> 2020</option>
+                                    <option value="21"> 2021</option>
+                                    <option value="22"> 2022</option>
+                                    <option value="23"> 2023</option>
+                                    <option value="24"> 2024</option>
+                                    <option value="25"> 2025</option>
+
+                                </select>
+                            </div>
+                            <div class="form-group" id="pay-now">
+                                <button type="button" class="btn btn-primary" id="confirm-purchase" onclick="createCreditCard()">Confirm</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

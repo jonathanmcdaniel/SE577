@@ -1,17 +1,27 @@
 package edu.drexel.TrainDemo.services.sales;
 
 import edu.drexel.TrainDemo.models.sales.CreditCard;
+import edu.drexel.TrainDemo.repositories.sales.CreditCardRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public interface PaymentService {
+public class PaymentServiceImpl implements PaymentService{
 
-    void addCreditCard(long userid, List<String> params);
-    List<CreditCard> getCreditCards(Long userid);
+    @Autowired
+    CreditCardRepository creditCardRepo;
 
+    public void addCreditCard(long userid, List<String> params) {
+        CreditCard card = new CreditCard(userid, params);
+        this.creditCardRepo.save(card);
+    }
 
+    @Override
+    public List<CreditCard> getCreditCards(Long userid) {
+        return this.creditCardRepo.findAllByUserId(userid);
+    }
 }
 
 

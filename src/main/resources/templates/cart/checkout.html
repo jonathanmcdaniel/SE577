@@ -3,6 +3,9 @@
 <head>
     <th:block th:replace="base::header"/>
     <script type="text/javascript" src="/js/cart.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+
+
 </head>
 <body>
 <th:block th:replace="base::navbar"/>
@@ -161,6 +164,45 @@
                     </div>
                 </div>
             </div>
+            <div class="row list-row">
+                <div class="container address-container">
+                    <a class="address-header">Choose a Credit Card</a>
+                    <div class="row">
+                        <select type="name" class="form-control address-select" id="creditCard">
+                            <option value="">-- Select Credit Card --</option>
+                            <option th:each="card,iter : ${cards}" th:value="'card'+${iter.index + 1}" th:text="'Credit Card ' + ${iter.index + 1}"></option>
+                        </select>
+                    </div>
+                    <br>
+                    <div th:each="card,iter : ${cards}" class="container address">
+                        <div class="row address-header">
+                            <pre><a>Credit Card Info #</a><a th:text="${iter.index + 1}"></a>:</pre>
+                        </div>
+                        <div class="row">
+                            <a hidden th:id="'card'+${iter.index + 1}" th:text="${card.getId()}"></a>
+                            <p>
+                                <a th:id="cardName" th:text="${card.getName()}"></a><br>
+                                <pre><a>Card #: </a><a th:id="cardNumber" th:text="${card.getCardNumber()"></a><br></pre>
+                            <pre><a>Exp: </a><a th:id="cardExp" th:text="${card.getCardExpMonth()} + '/' + ${card.getCardExpYear()}"></a>  <a>cvv: </a><a th:id="cardCvv" th:text="${card.getCvv()}"></a></pre>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form th:action='@{/charge}' method='POST' id='checkout-form' xmlns:th="http://www.w3.org/1999/xhtml">
+                <input type='hidden' th:value="${cartTotal}" name='amount' />
+                <h1>Price:<span th:text='${cartTotal}' /></h1>
+                <script
+                        src='https://checkout.stripe.com/checkout.js'
+                        class='stripe-button'
+                        th:attr='data-key=${stripePublicKey}, data-amount=${cartTotal}'
+                        data-name='TrainDemo'
+                        data-description='Order Checkout'
+                        data-image ='http://www.stackabuse.com/assets/images/sa-java-dark.svg?v=b5a08453df'
+                        data-locale='auto'
+                        data-zip-code='false'>
+                </script>
+            </form>
             <div class="row spacer">
                 <a class="checkout-button"><button class="btn btn-primary checkout-button" th:type="button" th:onclick="completeOrder()">Complete Order</button></a>
             </div>

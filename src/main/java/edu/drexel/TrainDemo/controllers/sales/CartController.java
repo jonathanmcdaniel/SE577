@@ -8,6 +8,7 @@ import edu.drexel.TrainDemo.Utils;
 import edu.drexel.TrainDemo.models.sales.Order;
 import edu.drexel.TrainDemo.models.users.Address;
 import edu.drexel.TrainDemo.services.sales.OrderService;
+import edu.drexel.TrainDemo.services.sales.PaymentService;
 import edu.drexel.TrainDemo.services.users.UserService;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,9 @@ public class CartController {
 
     @Autowired
     OrderService orderService;
+
+    @Autowired
+    PaymentService paymentService;
 
     public CartController(Logger logger){
         this.logger = logger;
@@ -97,6 +101,8 @@ public class CartController {
         model.addAttribute("cart", cart);
         model.addAttribute("billingAddresses", billingAddresses);
         model.addAttribute("shippingAddresses", shippingAddresses);
+        model.addAttribute("cards", this.paymentService.getCreditCards(Utils.intToLong(principal.getAttribute("id"))));
+        model.addAttribute("cartTotal", cart.getTotal());
 
         return "cart/checkout";
     }

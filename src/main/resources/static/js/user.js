@@ -48,3 +48,12 @@ function deleteAddress(index) {
         params: info,
     });
 }
+
+function createCreditCard() {
+    var info = [$('#name').val(), $('#number').val(), $('#month').children("option:selected").val(), $('#year').children("option:selected").val(), $('#cvv').val()]
+    console.log(info);
+    $.post("/payment/addCC", {
+        params: info
+    });
+
+}
